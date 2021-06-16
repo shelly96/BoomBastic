@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1224014557
+    locked: 0
+  - name: Player
+    uniqueID: 3433200847
+    locked: 0
+  - name: Bombs
+    uniqueID: 3137831505
+    locked: 0
+  - name: Boat
+    uniqueID: 2035645565
+    locked: 0
+  - name: Waves
+    uniqueID: 4188747269
+    locked: 0
