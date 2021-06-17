@@ -173,3 +173,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   shotAngle: 5
+  bombTimer: 5
