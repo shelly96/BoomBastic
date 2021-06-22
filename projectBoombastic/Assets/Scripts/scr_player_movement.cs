@@ -68,6 +68,11 @@ public class scr_player_movement : MonoBehaviour
             case "Boat":
                 inAir = false;
                 break;
+            case "Wave_2":
+                // TODO add sound 
+                // TODO add player damage or GameOver screen?
+                reset();
+                break;
         }
 
         
