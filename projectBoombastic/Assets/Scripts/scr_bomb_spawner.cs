@@ -5,9 +5,13 @@ using UnityEngine;
 public class scr_bomb_spawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> bombPrefabs;
-    [SerializeField] private float spawnTime = 1.0f;
+    [SerializeField] private float spawnTime = 5.0f;
+    [SerializeField] private int missingRedBombs = 3;
 
     private float counter = 0.0f;
+
+    private int redBombCounter = 0;
+
 
     // get Scrennbounds
     private Vector2 screenBounds;
@@ -31,8 +35,22 @@ public class scr_bomb_spawner : MonoBehaviour
             // move to the top left
             Vector2 spawnPos = new Vector2 ( (Random.Range((-screenBounds.x - 10), (screenBounds.x - 15))), (screenBounds.y + 3) );
 
-            GameObject bomb = Instantiate(bombPrefabs[Random.Range(0, bombPrefabs.Count)]) as GameObject;
-            bomb.transform.position = spawnPos;
+            // initialized bomb 
+            GameObject bombObject = bombPrefabs[Random.Range(0, bombPrefabs.Count)];
+
+            // spawn less red bombs (bomb_2)
+            if(bombObject.name == "bomb_2") {
+                redBombCounter ++;
+                Debug.Log("Missed red Bombs: " + redBombCounter);
+                if(redBombCounter > missingRedBombs) {
+                    GameObject bomb = Instantiate(bombObject) as GameObject;
+                    bomb.transform.position = spawnPos;
+                    redBombCounter = 0;
+                }
+            } else {
+                GameObject bomb = Instantiate(bombObject) as GameObject;
+                bomb.transform.position = spawnPos;
+            }
         }
     }
 }
