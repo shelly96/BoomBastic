@@ -13,7 +13,7 @@ public class scr_box_manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        counter = 4;// Random.Range(0, 4);
+        counter = Random.Range(0, 4);
         x_coordinate = 9;
         y_coordinate = 3;
 
@@ -21,7 +21,7 @@ public class scr_box_manager : MonoBehaviour
         while (counter > 0)
         {
             Vector2 spawnPos = new Vector2(Random.Range(-x_coordinate, x_coordinate), y_coordinate);
-            GameObject box = Instantiate<GameObject>(boxPrefabs[0]);
+            GameObject box = Instantiate<GameObject>(boxPrefabs[Random.Range(0, boxPrefabs.Count)]);
             box.transform.position = spawnPos;
 
             //set next box higher to prevent collision
