@@ -12,7 +12,10 @@ public class scr_bomb_behaviour : MonoBehaviour
     [SerializeField] private float explosionPower = 150f;
     //[SerializeField] private GameObject explosionEffect;
     private float explosionTime;
-    private bool hitBoat = false; 
+    private bool hitBoat = false;
+
+    private bool pickedUp = false;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +23,20 @@ public class scr_bomb_behaviour : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height, 0.0f));
         GetComponent<Rigidbody2D>().velocity = new Vector2(speed*shotAngle, -speed);
         explosionTime = Time.time + bombTimer;
+
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //picked up 
+        if (pickedUp) {
+            Debug.Log("Picked up!");
+            transform.position = new Vector2(player.GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y + 1);
+        }
+
         //bomb explosion
         if(Time.time >= explosionTime) {
             Explode();
@@ -43,7 +55,7 @@ public class scr_bomb_behaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.collider.name);
+        //Debug.Log(collision.collider.name);
 
         switch (collision.collider.name) {
             case "Wave_2":
@@ -102,6 +114,14 @@ public class scr_bomb_behaviour : MonoBehaviour
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
+    public void pickUp() {
+        pickedUp = true;
+    }
+
+    public void release() {
+        pickedUp = false;
     }
 
 }

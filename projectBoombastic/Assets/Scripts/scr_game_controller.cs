@@ -28,7 +28,7 @@ public class scr_game_controller : MonoBehaviour
             Vector2 spawnPos = new Vector2(x_pos, y_pos);
             GameObject heart = Instantiate<GameObject>(heartsPrefabs[0]);
             heart.transform.position = spawnPos;
-            heartsList.Add(heart);
+            //heartsList.Add(heart);
 
             //set next heart position
             x_pos += 1;
@@ -42,8 +42,8 @@ public class scr_game_controller : MonoBehaviour
     void Update()
     {
         //update score
-        coinVallue = GameObject.Find("Player").GetComponent<CollectCoin>().coin;
-        scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
+        //coinVallue = GameObject.Find("Player").GetComponent<CollectCoin>().coin;
+        //scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
 
         //update lives
         if (damage)

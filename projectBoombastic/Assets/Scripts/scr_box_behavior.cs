@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class scr_box_behavior : MonoBehaviour
 {
-    private Vector2 screenBounds; 
+    private Vector2 screenBounds;
 
     // Start is called before the first frame update
     void Start()
@@ -15,16 +15,17 @@ public class scr_box_behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+  
 
         //destroy box if it miss the water
-        if(-transform.position.y > screenBounds.y + 5) {
+        if (-transform.position.y > screenBounds.y + 5) {
             Destroy(this.gameObject);
         }
     }
 
      private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Box hit: " + collision.collider.name);
+        //Debug.Log("Box hit: " + collision.collider.name);
 
         switch (collision.collider.name) {
             case "Wave_2":
@@ -33,4 +34,5 @@ public class scr_box_behavior : MonoBehaviour
                 break;
         }
     }
+
 }

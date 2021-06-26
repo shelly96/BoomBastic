@@ -5,7 +5,6 @@ using UnityEngine;
 public class scr_boat : MonoBehaviour
 {
     [SerializeField] private float angle;
-    [SerializeField] private float height;
     [SerializeField] private float intervalSpeed;
     private Transform tf;
 
