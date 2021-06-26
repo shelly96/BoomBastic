@@ -11,6 +11,8 @@ public class scr_game_controller : MonoBehaviour
     [SerializeField] private List<GameObject> heartsPrefabs;
     private float x_pos = 12;
     private float y_pos = 7;
+    private List<GameObject> heartsList;
+    public bool damage = false;
 
     //score
     private GameObject scoreObject;
@@ -26,6 +28,7 @@ public class scr_game_controller : MonoBehaviour
             Vector2 spawnPos = new Vector2(x_pos, y_pos);
             GameObject heart = Instantiate<GameObject>(heartsPrefabs[0]);
             heart.transform.position = spawnPos;
+            heartsList.Add(heart);
 
             //set next heart position
             x_pos += 1;
@@ -41,5 +44,18 @@ public class scr_game_controller : MonoBehaviour
         //update score
         coinVallue = GameObject.Find("Player").GetComponent<CollectCoin>().coin;
         scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
+
+        //update lives
+        if (damage)
+        {
+            Destroy(heartsList[heartsList.Count - 1]);
+            damage = false;
+
+            //check for game over
+            /*if (heartsList.empty)
+            {
+                //gameover
+            }*/
+        }
     }
 }
