@@ -40,6 +40,6 @@ public class scr_game_controller : MonoBehaviour
     {
         //update score
         //coinVallue = GameObject.Find("Coin").GetComponent<CollectCoin>().coin;
-        scoreObject.GetComponent<Text>().text = 'Score: ' + coinVallue;
+        //scoreObject.GetComponent<Text>().text = 'Score: ' + coinVallue;
     }
 }
