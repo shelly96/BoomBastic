@@ -55,6 +55,11 @@ public class scr_player : MonoBehaviour
         if (Input.GetKey(KeyCode.W) && !inAir)
         {
             inAir = true;
+
+            // Reset velocity before each jump
+            rb.velocity = Vector2.zero;
+
+            // Apply jump force
             rb.AddForce(new Vector2(0, jumpForce * 100));
         }
 
