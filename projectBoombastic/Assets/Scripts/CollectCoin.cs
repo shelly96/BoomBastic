@@ -6,7 +6,7 @@ public class CollectCoin : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> coinPrefabs;
-    private float coin = 0;
+    public float coin = 0;
     private Vector2 screenBounds;
 
     private GameObject coinPrefab; 
