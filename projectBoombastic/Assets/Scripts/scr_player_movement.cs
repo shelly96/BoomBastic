@@ -37,7 +37,7 @@ public class scr_player_movement : MonoBehaviour
         float horizontalAxis = Input.GetAxis("Horizontal");
 
         // Vertical Movement
-        if (Input.GetKey(KeyCode.Space) && !inAir) {
+        if (Input.GetKey(KeyCode.W) && !inAir) {
             inAir = true;
             rb.AddForce(new Vector2(0, jumpForce*100));
         }
@@ -65,7 +65,16 @@ public class scr_player_movement : MonoBehaviour
         Debug.Log(collision.collider.name);
 
         switch (collision.collider.name) {
-            case "Boat":
+            case "box_large(Clone)":
+                inAir = false;
+                break;
+            case "box_medium(Clone)":
+                inAir = false;
+                break;
+            case "box_small(Clone)":
+                inAir = false;
+                break;
+            case "BoatBody":
                 inAir = false;
                 break;
             case "Wave_2":

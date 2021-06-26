@@ -6,14 +6,13 @@ public class scr_box_manager : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> boxPrefabs;
-    private int counter;
+    [SerializeField] private int counter;
     private float x_coordinate;
     private float y_coordinate;
 
     // Start is called before the first frame update
     void Start()
     {
-        counter = Random.Range(0, 4);
         x_coordinate = 9;
         y_coordinate = 3;
 
