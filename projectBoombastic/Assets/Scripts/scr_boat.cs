@@ -7,16 +7,18 @@ public class scr_boat : MonoBehaviour
     [SerializeField] private float angle;
     [SerializeField] private float height;
     [SerializeField] private float intervalSpeed;
-   
+
     private Transform tf;
 
     private float counter;
+    private Vector2 originalPos;
 
     // Start is called before the first frame update
     void Start()
     {
         tf = GetComponent<Transform>();
         counter = 0;
+        originalPos = new Vector2(tf.position.x, tf.position.y);
     }
 
     private void FixedUpdate()
@@ -32,7 +34,7 @@ public class scr_boat : MonoBehaviour
 
         float newHeight = height * Mathf.Sin(counter);
 
-        tf.position = new Vector3(-1.4f, newHeight - 2.6f, 0);
+        tf.position = new Vector3(originalPos.x, originalPos.y + newHeight, 0);
         
     }
 }

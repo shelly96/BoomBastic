@@ -50,6 +50,20 @@ public class scr_player : MonoBehaviour
     public void move()
     {
 
+        // PickUp Item
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (pickedUpObject != null)
+            {
+                throwObject();
+            }
+            else
+            {
+                pickUpObject();
+            }
+
+        }
+
         // Vertical Movement
         if (Input.GetKey(KeyCode.W) && !inAir)
         {
@@ -96,21 +110,6 @@ public class scr_player : MonoBehaviour
             // Set facing direction
             faceDirection = Direction.DOWN;
         }*/
-
-
-        // PickUp Item
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (pickedUpObject != null)
-            {
-                throwObject();
-            }
-            else
-            {
-                pickUpObject();
-            }
-
-        }
 
         // Reset Position (DEBUG)
         if (Input.GetKey(KeyCode.R))
