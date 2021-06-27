@@ -25,6 +25,7 @@ public class scr_player : MonoBehaviour
     };
 
     private Direction faceDirection = Direction.RIGHT;
+    [SerializeField] private float throwStrength;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +49,6 @@ public class scr_player : MonoBehaviour
 
     public void move()
     {
-
-        float horizontalAxis = Input.GetAxis("Horizontal");
 
         // Vertical Movement
         if (Input.GetKey(KeyCode.W) && !inAir)
@@ -87,7 +86,7 @@ public class scr_player : MonoBehaviour
             pickUpZone.position = new Vector3(transform.position.x + pickUpRange, transform.position.y, 0);
 
         }
-        else if (Input.GetKey(KeyCode.W))
+      /*  else if (Input.GetKey(KeyCode.W))
         {
             // Set facing direction
             faceDirection = Direction.UP;
@@ -96,11 +95,11 @@ public class scr_player : MonoBehaviour
         {
             // Set facing direction
             faceDirection = Direction.DOWN;
-        }
+        }*/
 
 
         // PickUp Item
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (pickedUpObject != null)
             {
@@ -207,10 +206,10 @@ public class scr_player : MonoBehaviour
                 directionVector = new Vector2(transform.position.x, transform.position.y + 10);
                 break;*/
             case Direction.LEFT:
-                directionVector = new Vector2(transform.position.x - 10, transform.position.y+10);
+                directionVector = new Vector2(transform.position.x - throwStrength, transform.position.y+ throwStrength);
                 break;
             case Direction.RIGHT:
-                directionVector = new Vector2(transform.position.x + 10, transform.position.y+10);
+                directionVector = new Vector2(transform.position.x + throwStrength, transform.position.y+ throwStrength);
                 break;
         }
 
