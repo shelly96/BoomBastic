@@ -5,7 +5,9 @@ using UnityEngine;
 public class scr_boat : MonoBehaviour
 {
     [SerializeField] private float angle;
+    [SerializeField] private float height;
     [SerializeField] private float intervalSpeed;
+   
     private Transform tf;
 
     private float counter;
@@ -15,12 +17,6 @@ public class scr_boat : MonoBehaviour
     {
         tf = GetComponent<Transform>();
         counter = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
- 
     }
 
     private void FixedUpdate()
@@ -33,6 +29,10 @@ public class scr_boat : MonoBehaviour
         tf.rotation = Quaternion.Euler(new Vector3(0, 0, newAngle));
 
         // Translation (Y-Axis)
-        //
+
+        float newHeight = height * Mathf.Sin(counter);
+
+        tf.position = new Vector3(-1.4f, newHeight - 2.6f, 0);
+        
     }
 }
