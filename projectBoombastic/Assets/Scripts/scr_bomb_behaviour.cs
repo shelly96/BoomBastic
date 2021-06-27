@@ -90,11 +90,13 @@ public class scr_bomb_behaviour : MonoBehaviour
                         //add force, but boat has no Rigidbody so you get an error
                         nearbyObject.GetComponent<Rigidbody2D>().AddForce(direction * explosionPower);
                         Debug.Log("Player got some damage!");
-                        //TODO add player damage
-                        break;
+                        //player damage
+                        scr_game_controller.damage = true;
+                    break;
                     case "Boat":
                         //TODO add boat damage
                         Debug.Log("Boat got some damage!");
+                        scr_game_controller.damage = true;
                         break;
                     case "Box":
                         //add force, but boat has no Rigidbody so you get an error

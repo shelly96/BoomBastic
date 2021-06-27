@@ -638,7 +638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 867, y: -510}
+  m_AnchoredPosition: {x: 390, y: 180}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &680205437
@@ -1172,7 +1172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartsPrefabs: []
-  damage: 0
 --- !u!4 &1334374930
 Transform:
   m_ObjectHideFlags: 0
@@ -1315,7 +1314,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartsPrefabs:
   - {fileID: 6555197669731569305, guid: d4fd76e400f2295468262fded8dea241, type: 3}
-  damage: 0
 --- !u!4 &1423210481
 Transform:
   m_ObjectHideFlags: 0
@@ -1612,7 +1610,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703844308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25, y: -3.3, z: 0}
+  m_LocalPosition: {x: 2.25, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471168198}
@@ -1653,7 +1651,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefabs: []
-  coin: 0
 --- !u!1 &1737502695
 GameObject:
   m_ObjectHideFlags: 0

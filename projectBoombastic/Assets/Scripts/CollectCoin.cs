@@ -6,7 +6,7 @@ public class CollectCoin : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> coinPrefabs;
-    public int coin = 0;
+    public static int coin = 0;
     private Vector2 screenBounds;
 
     private GameObject coinPrefab; 
@@ -20,7 +20,7 @@ public class CollectCoin : MonoBehaviour
 
         Debug.Log("Detected Collision");
         if(other.transform.tag == "Coin"){
-            this.coin += 1;
+            coin += 1;
 
             // move to the top left
             Vector2 spawnPos = new Vector2 ( (Random.Range((-screenBounds.x+7), (screenBounds.x-7))), (screenBounds.y - 8) );
