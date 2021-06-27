@@ -123,6 +123,7 @@ MonoBehaviour:
   bombTimer: 5
   explosionRadius: 2
   explosionPower: 150
+  pickUpOffsetY: 1
 --- !u!58 &4286571232995857168
 CircleCollider2D:
   m_ObjectHideFlags: 0

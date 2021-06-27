@@ -34,7 +34,7 @@ public class scr_bomb_behaviour : MonoBehaviour
         //picked up 
         if (pickedUp) {
             Debug.Log("Picked up!");
-            transform.position = new Vector2(player.GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y + 1);
+            transform.position = new Vector2(player.GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y + 0.8f);
         }
 
         //bomb explosion

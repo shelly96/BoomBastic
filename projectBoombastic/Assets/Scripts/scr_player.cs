@@ -6,6 +6,9 @@ public class scr_player : MonoBehaviour
 {
 
     private Rigidbody2D rb;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
     private Vector2 originalPos;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
@@ -27,6 +30,8 @@ public class scr_player : MonoBehaviour
     private Direction faceDirection = Direction.RIGHT;
     [SerializeField] private float throwStrength;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,18 +44,7 @@ public class scr_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void FixedUpdate()
-    {
-        move();
-    }
-
-    public void move()
-    {
-
-        // PickUp Item
+        // PickUp Object
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (pickedUpObject != null)
@@ -64,10 +58,33 @@ public class scr_player : MonoBehaviour
 
         }
 
+        // Pick Up Object Animation
+        if (pickedUpObject == null)
+        {
+            animator.SetBool("holding", false);
+        }
+        else {
+            animator.SetBool("holding", true);
+        }
+        
+    }
+
+    private void FixedUpdate()
+    {
+        move();
+    }
+
+    public void move()
+    {
+
+        float horizontalAxisRaw = Input.GetAxisRaw("Horizontal");
+        float verticalAxisRaw = Input.GetAxisRaw("Vertical");
+
         // Vertical Movement
-        if (Input.GetKey(KeyCode.W) && !inAir)
+        if (verticalAxisRaw > 0 && !inAir)
         {
             inAir = true;
+            animator.SetBool("inAir", inAir);
 
             // Reset velocity before each jump
             rb.velocity = Vector2.zero;
@@ -77,10 +94,16 @@ public class scr_player : MonoBehaviour
         }
 
         // Horizontal Movement
-        if (Input.GetKey(KeyCode.A))
+        if (horizontalAxisRaw < 0)
         {
             // Set facing direction
             faceDirection = Direction.LEFT;
+
+            // Flip sprite
+            spriteRenderer.flipX = true;
+
+            // Walking animation
+            animator.SetFloat("movementSpeed", Mathf.Abs(horizontalAxisRaw));
 
             // Move player
             transform.position = transform.position + new Vector3(-1 * movementSpeed * Time.deltaTime, 0);
@@ -88,16 +111,28 @@ public class scr_player : MonoBehaviour
             // Move PickUpZone to the left
             pickUpZone.position = new Vector3(transform.position.x - pickUpRange, transform.position.y, 0);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (horizontalAxisRaw > 0)
         {
             // Set facing direction
             faceDirection = Direction.RIGHT;
+
+            // Flip sprite
+            spriteRenderer.flipX = false;
+
+            // Walking animation
+            animator.SetFloat("movementSpeed", Mathf.Abs(horizontalAxisRaw));
 
             // Move player
             transform.position = transform.position + new Vector3(1 * movementSpeed * Time.deltaTime, 0);
 
             // Move PickUpZone to the right
             pickUpZone.position = new Vector3(transform.position.x + pickUpRange, transform.position.y, 0);
+
+        }
+        else {
+
+            //Reset Animation 
+            animator.SetFloat("movementSpeed", Mathf.Abs(horizontalAxisRaw));
 
         }
       /*  else if (Input.GetKey(KeyCode.W))
@@ -127,15 +162,19 @@ public class scr_player : MonoBehaviour
         {
             case "box_large(Clone)":
                 inAir = false;
+                animator.SetBool("inAir", inAir);
                 break;
             case "box_medium(Clone)":
                 inAir = false;
+                animator.SetBool("inAir", inAir);
                 break;
             case "box_small(Clone)":
                 inAir = false;
+                animator.SetBool("inAir", inAir);
                 break;
             case "BoatBody":
                 inAir = false;
+                animator.SetBool("inAir", inAir);
                 break;
             case "Wave_2":
                 // TODO add sound 
