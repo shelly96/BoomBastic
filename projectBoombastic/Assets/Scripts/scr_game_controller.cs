@@ -12,7 +12,7 @@ public class scr_game_controller : MonoBehaviour
     private float x_pos = 12;
     private float y_pos = 7;
     private GameObject heart;
-    private List<GameObject> heartList;
+    private List<GameObject> heartList = new List<GameObject>();
     public static bool damage = false;
 
     //score
@@ -30,7 +30,8 @@ public class scr_game_controller : MonoBehaviour
             heart = Instantiate<GameObject>(heartsPrefabs[0]);
             heart.transform.position = spawnPos;
 
-            //heartList.Add(heart.gameObject);
+            heartList.Add(heart.gameObject);
+            Debug.Log("added");
 
             //set next heart position
             x_pos += 1;
@@ -45,15 +46,15 @@ public class scr_game_controller : MonoBehaviour
     void Update()
     {
         //update score
-        //coinVallue = GameObject.Find("Player").GetComponent<CollectCoin>().coin;
+        coinVallue = CollectCoin.coin;
         //scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
 
         //update lives
-        if (damage)
+        if (false)//damage)
         {
             Debug.Log("Lost one live");
-
-            //Destroy(heartList[heartList.Count - 1]);
+            Debug.Log(heartList.Count);
+            Destroy(heartList[heartList.Count - 1]);
             damage = false;
 
             //check for game over
