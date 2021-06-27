@@ -11,8 +11,9 @@ public class scr_game_controller : MonoBehaviour
     [SerializeField] private List<GameObject> heartsPrefabs;
     private float x_pos = 12;
     private float y_pos = 7;
-    private List<GameObject> heartsList;
-    public bool damage = false;
+    private GameObject heart;
+    private List<GameObject> heartList;
+    public static bool damage = false;
 
     //score
     private GameObject scoreObject;
@@ -26,12 +27,14 @@ public class scr_game_controller : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
             Vector2 spawnPos = new Vector2(x_pos, y_pos);
-            GameObject heart = Instantiate<GameObject>(heartsPrefabs[0]);
+            heart = Instantiate<GameObject>(heartsPrefabs[0]);
             heart.transform.position = spawnPos;
-            //heartsList.Add(heart);
+
+            //heartList.Add(heart.gameObject);
 
             //set next heart position
             x_pos += 1;
+
         }
 
         scoreObject = GameObject.Find("Score");
@@ -48,13 +51,16 @@ public class scr_game_controller : MonoBehaviour
         //update lives
         if (damage)
         {
-            Destroy(heartsList[heartsList.Count - 1]);
+            Debug.Log("Lost one live");
+
+            //Destroy(heartList[heartList.Count - 1]);
             damage = false;
 
             //check for game over
-            /*if (heartsList.empty)
+            /*if (heartList.Count == 0)
             {
                 //gameover
+                return;
             }*/
         }
     }

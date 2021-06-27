@@ -143,6 +143,10 @@ public class scr_player : MonoBehaviour
                 // TODO add sound 
                 // TODO add player damage or GameOver screen?
                 reset();
+
+                //reduce lives
+                scr_game_controller.damage = true;
+
                 break;
         }
 
