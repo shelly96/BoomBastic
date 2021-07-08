@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class scr_game_controller : MonoBehaviour
 {
-
+    private bool running = false;
+    [SerializeField] private List<GameObject> gameplayElements;
+    [SerializeField] private List<GameObject> titlescreenElements;
 
     //lives
     [SerializeField] private List<GameObject> heartsPrefabs;
@@ -19,6 +21,12 @@ public class scr_game_controller : MonoBehaviour
     private GameObject scoreObject;
     private const string scoreTxt = "Score: ";
     private int coinVallue;
+
+    private void Awake()
+    {
+        //Deactivate all gameplay elements at runtime to display the title screen
+        deactivateGameplayElements();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +53,11 @@ public class scr_game_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (running) {
+            play();
+        }
+
         //update score
         coinVallue = CollectCoin.coin;
         //scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
@@ -64,5 +77,42 @@ public class scr_game_controller : MonoBehaviour
                 return;
             }*/
         }
+    }
+
+    void play() {
+        deactivateTitleScreenElements();
+        activateGameplayElements();
+    }
+
+
+    void activateTitleScreenElements()
+    {
+        foreach (GameObject activatedElement in titlescreenElements)
+        {
+            activatedElement.SetActive(true);
+        }
+    }
+    public void deactivateTitleScreenElements() {
+        foreach (GameObject deactivatedElement in titlescreenElements)
+        {
+            deactivatedElement.SetActive(false);
+        }
+    }
+
+    public void activateGameplayElements()
+    {
+        foreach (GameObject activatedElement in gameplayElements)
+        {
+            activatedElement.SetActive(true);
+        }
+    }
+
+    void deactivateGameplayElements()
+    {
+        foreach (GameObject deactivatedElement in gameplayElements)
+        {
+            deactivatedElement.SetActive(false);
+        }
+
     }
 }
