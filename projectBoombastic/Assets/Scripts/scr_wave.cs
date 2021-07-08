@@ -6,7 +6,7 @@ public class scr_wave : MonoBehaviour
 {
 
     [SerializeField] float movementSpeed;
-    [SerializeField] double endXPosition;
+    [SerializeField] double endXOffset;
     private Vector3 startingPosition;
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class scr_wave : MonoBehaviour
         move();
 
         //reset 
-        if (transform.position.x < endXPosition) {
+        if (transform.position.x < endXOffset) {
            reset();
         }
     }

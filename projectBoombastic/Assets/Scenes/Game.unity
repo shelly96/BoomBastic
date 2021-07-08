@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2.5
-  endXPosition: -6.1
+  endXOffset: -6.05
 --- !u!61 &406550533
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4
-  endXPosition: -6.1
+  endXOffset: -6.1
 --- !u!1 &1308796937
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.2
-  endXPosition: -8.64
+  endXOffset: -8.85
 --- !u!212 &1407318716
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1802,7 +1802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.4
-  endXPosition: -8.64
+  endXOffset: -8.78
 --- !u!1 &1812347753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2013,4 +2013,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  endXPosition: -6.5
+  endXOffset: -6.65
