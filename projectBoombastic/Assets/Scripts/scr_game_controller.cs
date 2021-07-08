@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class scr_game_controller : MonoBehaviour
 {
-    private bool running = false;
+    [SerializeField] private bool skipTitleScreen;
     [SerializeField] private List<GameObject> gameplayElements;
     [SerializeField] private List<GameObject> titlescreenElements;
 
@@ -26,6 +26,10 @@ public class scr_game_controller : MonoBehaviour
     {
         //Deactivate all gameplay elements at runtime to display the title screen
         deactivateGameplayElements();
+
+        if (skipTitleScreen) {
+            play();
+        }
     }
 
     // Start is called before the first frame update
@@ -54,10 +58,6 @@ public class scr_game_controller : MonoBehaviour
     void Update()
     {
 
-        if (running) {
-            play();
-        }
-
         //update score
         coinVallue = CollectCoin.coin;
         //scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
@@ -79,7 +79,7 @@ public class scr_game_controller : MonoBehaviour
         }
     }
 
-    void play() {
+    public void play() {
         deactivateTitleScreenElements();
         activateGameplayElements();
     }
