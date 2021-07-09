@@ -5,6 +5,8 @@ using UnityEngine;
 public class scr_player : MonoBehaviour
 {
 
+    private Vector2 screenBounds;
+
     private Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
@@ -13,6 +15,7 @@ public class scr_player : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
     private bool inAir;
+
 
     // PickUp
     private Collider2D pickedUpObject;
@@ -35,6 +38,7 @@ public class scr_player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height, 0.0f));
         rb = GetComponent<Rigidbody2D>();
         originalPos = new Vector2(transform.position.x, transform.position.y);
         inAir = false;
@@ -65,6 +69,13 @@ public class scr_player : MonoBehaviour
         }
         else {
             animator.SetBool("holding", true);
+        }
+
+        // Detect when player has fallen off the boat 
+        if (-transform.position.y > screenBounds.y + 5) {
+            //TODO add GameOver Screen
+            Debug.Log("GAME OVER!");
+            Destroy(this.gameObject);
         }
         
     }
@@ -178,9 +189,7 @@ public class scr_player : MonoBehaviour
                 break;
             case "Wave_2":
                 // TODO add sound 
-                // TODO add player damage or GameOver screen?
-                reset();
-
+    
                 //reduce lives
                 scr_game_controller.damage = true;
 

@@ -16,20 +16,17 @@ public class scr_box_behavior : MonoBehaviour
     void Update()
     {
   
-
         //destroy box if it miss the water
         if (-transform.position.y > screenBounds.y + 5) {
             Destroy(this.gameObject);
         }
     }
 
-     private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D trigger)
     {
-        //Debug.Log("Box hit: " + collision.collider.name);
-
-        switch (collision.collider.name) {
+        
+        switch (trigger.name) {
             case "Wave_2":
-                Destroy(this.gameObject);
                 // TODO add sound 
                 break;
         }
