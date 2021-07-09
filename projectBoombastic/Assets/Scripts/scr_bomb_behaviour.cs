@@ -13,7 +13,6 @@ public class scr_bomb_behaviour : MonoBehaviour
     [SerializeField] private GameObject explosionEffect;
     private float explosionTime;
     private bool hitBoat = false;
-
     private bool pickedUp = false;
     private GameObject player;
 
@@ -55,8 +54,7 @@ public class scr_bomb_behaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log(collision.collider.name);
-
+        
         switch (collision.collider.name) {
             case "Wave_2":
                 // TODO add sound 
@@ -70,10 +68,15 @@ public class scr_bomb_behaviour : MonoBehaviour
 
     private void Explode(){
 
-        // show effect with no rotation
+        // show explosion effect 
         GameObject ExplosionEffect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(ExplosionEffect, 1.0f);
 
+        //destroy bomb object
+        Destroy(this.gameObject);
+        Debug.Log("BOOM!");
+        //TODO add sound  
+        
         // get nearby objects
         Collider2D[] bombColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
             // add force and damage
@@ -94,7 +97,7 @@ public class scr_bomb_behaviour : MonoBehaviour
                         Debug.Log("Player got some damage!");
                         //player damage
                         scr_game_controller.damage = true;
-                    break;
+                        break;
                     case "Boat":
                         //TODO add boat damage
                         Debug.Log("Boat got some damage!");
@@ -103,15 +106,14 @@ public class scr_bomb_behaviour : MonoBehaviour
                     case "box":
                         //add force, but boat has no Rigidbody so you get an error
                         nearbyObject.GetComponent<Rigidbody2D>().AddForce(direction * explosionPower);
-                        Debug.Log("Box was moved by the bomb");
+                        break;
+                    case "bomb":
+                        //destroy other bomb
+                        Debug.Log("BoomBoomBoom");
+                        nearbyObject.GetComponent<scr_bomb_behaviour>().Explode();
                         break;
                 }
             }
-
-        //destroy bomb object
-        Destroy(this.gameObject);
-        Debug.Log("BOOM!");
-        //TODO add sound  
     }
 
     // show the Radius in the Bomb Prefab
