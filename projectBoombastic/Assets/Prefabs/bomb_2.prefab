@@ -139,3 +139,4 @@ MonoBehaviour:
   bombTimer: 5
   explosionRadius: 3
   explosionPower: 300
+  explosionEffect: {fileID: 6125338416693736092, guid: b70a882c0f7d31740bad3df414a24c2c, type: 3}

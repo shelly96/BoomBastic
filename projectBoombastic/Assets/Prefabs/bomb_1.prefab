@@ -123,7 +123,7 @@ MonoBehaviour:
   bombTimer: 5
   explosionRadius: 2
   explosionPower: 150
-  pickUpOffsetY: 1
+  explosionEffect: {fileID: 6125338416693736092, guid: b70a882c0f7d31740bad3df414a24c2c, type: 3}
 --- !u!58 &4286571232995857168
 CircleCollider2D:
   m_ObjectHideFlags: 0

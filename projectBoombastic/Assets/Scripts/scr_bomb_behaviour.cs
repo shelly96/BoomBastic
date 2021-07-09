@@ -10,7 +10,7 @@ public class scr_bomb_behaviour : MonoBehaviour
     [SerializeField] private float bombTimer = 5f;
     [SerializeField] private float explosionRadius = 2f; 
     [SerializeField] private float explosionPower = 150f;
-    //[SerializeField] private GameObject explosionEffect;
+    [SerializeField] private GameObject explosionEffect;
     private float explosionTime;
     private bool hitBoat = false;
 
@@ -59,7 +59,6 @@ public class scr_bomb_behaviour : MonoBehaviour
 
         switch (collision.collider.name) {
             case "Wave_2":
-                Destroy(this.gameObject);
                 // TODO add sound 
                 break;
             case "Boat":
@@ -72,8 +71,8 @@ public class scr_bomb_behaviour : MonoBehaviour
     private void Explode(){
 
         // show effect with no rotation
-        //GameObject ExplosionEffect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        //Destroy(ExplosionEffect, bombTimer+2);
+        GameObject ExplosionEffect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        Destroy(ExplosionEffect, 1.0f);
 
         // get nearby objects
         Collider2D[] bombColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
@@ -84,8 +83,11 @@ public class scr_bomb_behaviour : MonoBehaviour
                 
                 //force direction for objects
                 Vector2 direction = nearbyObject.transform.position - transform.position;
+
+                string first_word = nearbyObject.name.Split('_')[0];
                 
-                switch (nearbyObject.name) {
+                switch (first_word) {
+                    
                     case "Player":
                         //add force, but boat has no Rigidbody so you get an error
                         nearbyObject.GetComponent<Rigidbody2D>().AddForce(direction * explosionPower);
@@ -98,7 +100,7 @@ public class scr_bomb_behaviour : MonoBehaviour
                         Debug.Log("Boat got some damage!");
                         scr_game_controller.damage = true;
                         break;
-                    case "Box":
+                    case "box":
                         //add force, but boat has no Rigidbody so you get an error
                         nearbyObject.GetComponent<Rigidbody2D>().AddForce(direction * explosionPower);
                         Debug.Log("Box was moved by the bomb");
