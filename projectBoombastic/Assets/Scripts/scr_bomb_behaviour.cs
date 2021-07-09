@@ -11,6 +11,7 @@ public class scr_bomb_behaviour : MonoBehaviour
     [SerializeField] private float explosionRadius = 2f; 
     [SerializeField] private float explosionPower = 150f;
     [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private float explosionDelay = 0.3f;
     private float explosionTime;
     private bool hitBoat = false;
     private bool pickedUp = false;
@@ -110,10 +111,14 @@ public class scr_bomb_behaviour : MonoBehaviour
                     case "bomb":
                         //destroy other bomb
                         Debug.Log("BoomBoomBoom");
-                        nearbyObject.GetComponent<scr_bomb_behaviour>().Explode();
+                        nearbyObject.GetComponent<scr_bomb_behaviour>().reduceExplosionTime(this.explosionTime);
                         break;
                 }
             }
+    }
+
+    private void reduceExplosionTime (float newTime) {
+        explosionTime = newTime + explosionDelay;
     }
 
     // show the Radius in the Bomb Prefab
