@@ -17,12 +17,16 @@ public class scr_bomb_behaviour : MonoBehaviour
     private bool pickedUp = false;
     private GameObject player;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height, 0.0f));
         GetComponent<Rigidbody2D>().velocity = new Vector2(speed*shotAngle, -speed);
         explosionTime = Time.time + bombTimer;
+
+        animator = GetComponent<Animator>();
 
         player = GameObject.Find("Player");
     }
@@ -36,9 +40,16 @@ public class scr_bomb_behaviour : MonoBehaviour
             Debug.Log("Picked up!");
             transform.position = new Vector2(player.GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y + 0.8f);
         }
+        Debug.Log(Time.time);
+
+        //bomb animation
+        if (Time.time >= explosionTime - bombTimer* 0.5f)
+        {
+            animator.SetBool("exploding", true);
+        }
 
         //bomb explosion
-        if(Time.time >= explosionTime) {
+        if (Time.time >= explosionTime) {
             Explode();
         }
 
