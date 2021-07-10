@@ -35,6 +35,10 @@ public class scr_boat : MonoBehaviour
         float newHeight = height * Mathf.Sin(counter);
 
         tf.position = new Vector3(originalPos.x, originalPos.y + newHeight, 0);
+
+        if (counter >= Mathf.PI*2) {
+            counter = 0f;
+        }
         
     }
 }

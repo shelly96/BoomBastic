@@ -228,6 +228,7 @@ public class scr_player : MonoBehaviour
                     break;*/
             }
 
+            pickedUpObject.GetComponent<Rigidbody2D>().mass = 0f;
         }
         else
         {
@@ -262,7 +263,8 @@ public class scr_player : MonoBehaviour
 
 
         // Throw object
-        pickedUpObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        pickedUpObject.GetComponent<Rigidbody2D>().mass = 1f;
+        pickedUpObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         pickedUpObject.GetComponent<Rigidbody2D>().AddForce(directionVector, ForceMode2D.Impulse);
         pickedUpObject.GetComponent<scr_bomb_behaviour>().release();
         pickedUpObject = null;
