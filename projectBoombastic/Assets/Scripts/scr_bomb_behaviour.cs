@@ -118,11 +118,15 @@ public class scr_bomb_behaviour : MonoBehaviour
                         //add force, but boat has no Rigidbody so you get an error
                         nearbyObject.GetComponent<Rigidbody2D>().AddForce(direction * explosionPower);
                         break;
-                    case "bomb":
-                        //destroy other bomb
-                        Debug.Log("BoomBoomBoom");
-                        nearbyObject.GetComponent<scr_bomb_behaviour>().reduceExplosionTime(this.explosionTime);
+                    case "treasure":
+                        //add force, but boat has no Rigidbody so you get an error
+                        nearbyObject.GetComponent<Rigidbody2D>().AddForce(direction * explosionPower);
                         break;
+                    case "bomb":
+                            //destroy other bomb
+                            Debug.Log("BoomBoomBoom");
+                            nearbyObject.GetComponent<scr_bomb_behaviour>().reduceExplosionTime(this.explosionTime);
+                            break;
                 }
             }
     }

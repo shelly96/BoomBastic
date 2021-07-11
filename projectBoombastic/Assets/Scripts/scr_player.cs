@@ -168,22 +168,19 @@ public class scr_player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Debug.Log(collision.collider.name);
+        string first_word = collision.collider.name.Split('_')[0];
 
-        switch (collision.collider.name)
+        switch (first_word)
         {
-            case "box_large(Clone)":
-                inAir = false;
-                animator.SetBool("inAir", inAir);
-                break;
-            case "box_medium(Clone)":
-                inAir = false;
-                animator.SetBool("inAir", inAir);
-                break;
-            case "box_small(Clone)":
+            case "box":
                 inAir = false;
                 animator.SetBool("inAir", inAir);
                 break;
             case "BoatBody":
+                inAir = false;
+                animator.SetBool("inAir", inAir);
+                break;
+            case "treasure":
                 inAir = false;
                 animator.SetBool("inAir", inAir);
                 break;
@@ -208,13 +205,11 @@ public class scr_player : MonoBehaviour
             Debug.Log(pickedUpObject.name);
 
             // Pick up object
+            string first_word = pickedUpObject.name.Split('_')[0];
 
-            switch (pickedUpObject.name)
+            switch (first_word)
             {
-                case "bomb_1(Clone)":
-                    pickedUpObject.GetComponent<scr_bomb_behaviour>().pickUp();
-                    break;
-                case "bomb_2(Clone)":
+                case "bomb":
                     pickedUpObject.GetComponent<scr_bomb_behaviour>().pickUp();
                     break;
              /*   case "box_small(Clone)":
