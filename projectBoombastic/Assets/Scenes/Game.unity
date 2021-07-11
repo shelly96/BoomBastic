@@ -539,7 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 1
   height: 0.15
-  intervalSpeed: 0.015
+  intervalSpeed: 0.02
 --- !u!1 &551823746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136057977}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.340187, y: -0.36, z: 30.991701}
+  m_LocalPosition: {x: 17.31, y: -0.12, z: 30.991701}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1737502696}

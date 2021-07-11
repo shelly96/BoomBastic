@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class scr_game_controller : MonoBehaviour
 {
+
+    // title
     [SerializeField] private bool skipTitleScreen;
     [SerializeField] private List<GameObject> gameplayElements;
     [SerializeField] private List<GameObject> titlescreenElements;

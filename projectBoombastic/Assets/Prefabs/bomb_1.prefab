@@ -123,7 +123,7 @@ MonoBehaviour:
   shotAngle: 6
   bombTimer: 5
   explosionRadius: 2
-  explosionPower: 150
+  explosionPower: 275
   explosionEffect: {fileID: 6125338416693736092, guid: b70a882c0f7d31740bad3df414a24c2c, type: 3}
   explosionDelay: 0.3
 --- !u!58 &4286571232995857168

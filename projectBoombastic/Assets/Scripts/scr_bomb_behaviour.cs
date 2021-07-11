@@ -40,7 +40,6 @@ public class scr_bomb_behaviour : MonoBehaviour
             Debug.Log("Picked up!");
             transform.position = new Vector2(player.GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y + 0.8f);
         }
-        Debug.Log(Time.time);
 
         //bomb animation
         if (Time.time >= explosionTime - bombTimer* 0.5f)
