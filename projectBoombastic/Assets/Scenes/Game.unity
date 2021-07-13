@@ -2195,7 +2195,7 @@ MonoBehaviour:
   bombPrefabs:
   - {fileID: 2820479653558147393, guid: 6637d9fad5cc30c4b8e086c0bb482083, type: 3}
   - {fileID: 6347460946192091289, guid: 88baccc5b1c998c45bcdb02e6532c418, type: 3}
-  spawnTime: 2
+  spawnTime: 4
   missingRedBombs: 3
 --- !u!4 &1812347755
 Transform:
