@@ -117,6 +117,7 @@ public class scr_game_controller : MonoBehaviour
     public void replay() {
         //reload game
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        CollectCoin.coin = 0;
     }
 
 
