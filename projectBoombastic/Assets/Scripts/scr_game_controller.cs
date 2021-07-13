@@ -157,6 +157,8 @@ public class scr_game_controller : MonoBehaviour
         {
             deactivatedElement.SetActive(false);
         }
+
+
     }
 
     public void activateGameOverScreenElements() {
@@ -164,6 +166,14 @@ public class scr_game_controller : MonoBehaviour
         {
             deactivatedElement.SetActive(true);
         }
+
+        //activate hearts and score
+        for (int i = 0; i < maxHealthPoints; i++)
+        {
+            heartList[i].SetActive(false);
+        }
+
+        scoreObject.SetActive(false);
     }
 
     public void deactivateGameOverScreenElements() {

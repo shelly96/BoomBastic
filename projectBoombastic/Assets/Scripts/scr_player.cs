@@ -76,10 +76,8 @@ public class scr_player : MonoBehaviour
 
         // Detect when player has fallen off the boat 
         if (-transform.position.y > screenBounds.y + 5) {
-            // healthPoints = 0;
+            healthPoints = 0;
             // this.gameObject.SetActive(false);
-
-            reset();
         }
         
     }
@@ -150,16 +148,6 @@ public class scr_player : MonoBehaviour
             animator.SetFloat("movementSpeed", Mathf.Abs(horizontalAxisRaw));
 
         }
-      /*  else if (Input.GetKey(KeyCode.W))
-        {
-            // Set facing direction
-            faceDirection = Direction.UP;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            // Set facing direction
-            faceDirection = Direction.DOWN;
-        }*/
 
         // Reset Position (DEBUG)
         if (Input.GetKey(KeyCode.R))
@@ -188,13 +176,6 @@ public class scr_player : MonoBehaviour
                 inAir = false;
                 animator.SetBool("inAir", inAir);
                 break;
-            case "Wave_2":
-                // TODO add sound 
-    
-                //reduce lives
-                scr_game_controller.damage = true;
-
-                break;
         }
 
 
@@ -216,15 +197,6 @@ public class scr_player : MonoBehaviour
                 case "bomb":
                     pickedUpObject.GetComponent<scr_bomb_behaviour>().pickUp();
                     break;
-             /*   case "box_small(Clone)":
-                    pickedUpObject.GetComponent<scr_box_behavior>().pickUp();
-                    break;
-                case "box_medium(Clone)":
-                    pickedUpObject.GetComponent<scr_box_behavior>().pickUp();
-                    break;
-                case "box_large(Clone)":
-                    pickedUpObject.GetComponent<scr_box_behavior>().pickUp();
-                    break;*/
             }
 
             pickedUpObject.GetComponent<Rigidbody2D>().mass = 0f;
@@ -245,13 +217,7 @@ public class scr_player : MonoBehaviour
 
         switch (faceDirection)
         {
-          
-          /*  case Direction.UP:
-                directionVector = new Vector2(transform.position.x, transform.position.y - 10);
-                break;
-            case Direction.DOWN:
-                directionVector = new Vector2(transform.position.x, transform.position.y + 10);
-                break;*/
+    
             case Direction.LEFT:
                 directionVector = new Vector2(transform.position.x - throwStrength, transform.position.y+ throwStrength);
                 break;
