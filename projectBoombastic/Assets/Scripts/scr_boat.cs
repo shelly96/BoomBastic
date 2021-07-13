@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class scr_boat : MonoBehaviour
 {
+
+    private int shipHits = 0;
+    private float sinkingDifference = 0;
+    [SerializeField] private float sinkingSpeed = 0.01f;
+
+    [SerializeField] private int maxShipHits = 5;
+    private bool isSinking = false;
+
     [SerializeField] private float angle;
     [SerializeField] private float height;
     [SerializeField] private float intervalSpeed;
@@ -23,6 +31,22 @@ public class scr_boat : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+
+        if (!isSinking)
+        {
+
+            if (sinkingDifference <= shipHits * 0.3f)
+            {
+                sinkingDifference += sinkingSpeed;
+            }
+
+        }
+        else {
+            sinkingDifference += sinkingSpeed*4;
+        }
+
+
         counter += intervalSpeed;
 
         // Rotation
@@ -34,11 +58,25 @@ public class scr_boat : MonoBehaviour
 
         float newHeight = height * Mathf.Sin(counter);
 
-        tf.position = new Vector3(originalPos.x, originalPos.y + newHeight, 0);
+        tf.position = new Vector3(originalPos.x, originalPos.y - sinkingDifference + newHeight, 0);
 
-        if (counter >= Mathf.PI*2) {
+        if (counter >= Mathf.PI * 2)
+        {
             counter = 0f;
         }
-        
     }
+
+    public void takeDamage() {
+        if (shipHits < maxShipHits)
+        {
+            shipHits++;
+
+            Debug.Log(shipHits);
+        }
+        else {
+            isSinking = true;
+        }
+            
+    }
+
 }
