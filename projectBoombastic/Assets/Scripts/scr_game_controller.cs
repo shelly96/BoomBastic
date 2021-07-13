@@ -6,14 +6,17 @@ using UnityEngine.UI;
 public class scr_game_controller : MonoBehaviour
 {
 
+    public GameObject player;
+
     // title
     [SerializeField] private bool skipTitleScreen;
     [SerializeField] private List<GameObject> gameplayElements;
     [SerializeField] private List<GameObject> titlescreenElements;
 
     //lives
-    [SerializeField] private List<GameObject> heartsPrefabs;
-    private float x_pos = 12;
+    private int maxHealthPoints;
+    [SerializeField] private GameObject heartsPrefabs;
+    private float x_pos = 12.85f;
     private float y_pos = 7;
     private GameObject heart;
     private List<GameObject> heartList = new List<GameObject>();
@@ -32,23 +35,26 @@ public class scr_game_controller : MonoBehaviour
         if (skipTitleScreen) {
             play();
         }
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        maxHealthPoints = player.GetComponent<scr_player>().healthPoints;
+
         //init hearts/ lives
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < maxHealthPoints; i++)
         {
             Vector2 spawnPos = new Vector2(x_pos, y_pos);
-            heart = Instantiate<GameObject>(heartsPrefabs[0]);
+            heart = Instantiate<GameObject>(heartsPrefabs);
             heart.transform.position = spawnPos;
 
             heartList.Add(heart.gameObject);
             Debug.Log("added");
 
             //set next heart position
-            x_pos += 1;
+            x_pos -= 1;
 
         }
 
@@ -60,25 +66,33 @@ public class scr_game_controller : MonoBehaviour
     void Update()
     {
 
+            //healthPoints
+            int currentHealthPoints = player.GetComponent<scr_player>().healthPoints;
+
+            //init hearts/ lives
+            for (int i = 0; i < maxHealthPoints; i++)
+            {
+                if (i < currentHealthPoints)
+                {
+                    heartList[i].GetComponent<scr_heart>().on = true;
+                }
+                else
+                {
+                    heartList[i].GetComponent<scr_heart>().on = false;
+                }
+
+            }
+
+            if (currentHealthPoints <= 0)
+            {
+                //GAME OVER
+            }
+        
+
         //update score
         coinVallue = CollectCoin.coin;
-        //scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
+        scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
 
-        //update lives
-        if (false)//damage)
-        {
-            Debug.Log("Lost one live");
-            Debug.Log(heartList.Count);
-            Destroy(heartList[heartList.Count - 1]);
-            damage = false;
-
-            //check for game over
-            /*if (heartList.Count == 0)
-            {
-                //gameover
-                return;
-            }*/
-        }
     }
 
     public void play() {

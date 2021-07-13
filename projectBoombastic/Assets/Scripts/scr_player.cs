@@ -5,6 +5,9 @@ using UnityEngine;
 public class scr_player : MonoBehaviour
 {
 
+    //Health
+    [SerializeField] public int healthPoints = 3;
+
     private Vector2 screenBounds;
 
     private Rigidbody2D rb;
@@ -73,9 +76,10 @@ public class scr_player : MonoBehaviour
 
         // Detect when player has fallen off the boat 
         if (-transform.position.y > screenBounds.y + 5) {
-            //TODO add GameOver Screen
-            Debug.Log("GAME OVER!");
-            Destroy(this.gameObject);
+            // healthPoints = 0;
+            // this.gameObject.SetActive(false);
+
+            reset();
         }
         
     }
@@ -266,11 +270,19 @@ public class scr_player : MonoBehaviour
 
     }
 
+    public void takeDamage() {
+        if (healthPoints > 0) {
+            healthPoints--;
+        }
+    }
+
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(pickUpZone.position, pickUpRadius);
     }
+
 
     public void reset()
     {

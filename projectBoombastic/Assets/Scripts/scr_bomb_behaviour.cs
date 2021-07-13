@@ -54,7 +54,9 @@ public class scr_bomb_behaviour : MonoBehaviour
 
         //stop bomb on the boat
         if(hitBoat) {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -screenBounds.y);
+            // GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -screenBounds.y);
+            //GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity * 0.50f;
+            //GetComponent<Rigidbody2D>().mass *= 2f;
         }
 
         //destroy bombs that miss the water
@@ -103,7 +105,8 @@ public class scr_bomb_behaviour : MonoBehaviour
                 switch (first_word) {
                     
                     case "Player":
-                        //add force, but boat has no Rigidbody so you get an error
+                    //add force, but boat has no Rigidbody so you get an error
+                        nearbyObject.GetComponent<scr_player>().takeDamage();
                         nearbyObject.GetComponent<Rigidbody2D>().AddForce(direction * explosionPower);
                         Debug.Log("Player got some damage!");
                         //player damage
