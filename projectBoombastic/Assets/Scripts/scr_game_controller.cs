@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class scr_game_controller : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class scr_game_controller : MonoBehaviour
     [SerializeField] private bool skipTitleScreen;
     [SerializeField] private List<GameObject> gameplayElements;
     [SerializeField] private List<GameObject> titlescreenElements;
+    [SerializeField] private List<GameObject> endscreenElements;
 
     //lives
     private int maxHealthPoints;
@@ -25,12 +27,13 @@ public class scr_game_controller : MonoBehaviour
     //score
     private GameObject scoreObject;
     private const string scoreTxt = "Score: ";
-    private int coinVallue;
+    private int coinValue;
 
     private void Awake()
     {
         //Deactivate all gameplay elements at runtime to display the title screen
         deactivateGameplayElements();
+        deactivateGameOverScreenElements();
 
         if (skipTitleScreen) {
             play();
@@ -72,7 +75,7 @@ public class scr_game_controller : MonoBehaviour
 
         if (heartList[0].activeSelf)
         {
-            //healthPoints
+            //init healthPoints
             int currentHealthPoints = player.GetComponent<scr_player>().healthPoints;
 
             //init hearts/ lives
@@ -92,15 +95,16 @@ public class scr_game_controller : MonoBehaviour
 
             if (currentHealthPoints <= 0)
             {
-                //GAME OVER
+                deactivateGameplayElements();
+                activateGameOverScreenElements();
             }
         }
 
         //update score
         if (scoreObject.activeSelf)
         {
-            coinVallue = CollectCoin.coin;
-            scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
+            coinValue = CollectCoin.coin;
+            scoreObject.GetComponent<Text>().text = scoreTxt + coinValue.ToString();
         }
         
     }
@@ -108,6 +112,11 @@ public class scr_game_controller : MonoBehaviour
     public void play() {
         deactivateTitleScreenElements();
         activateGameplayElements();
+    }
+
+    public void replay() {
+        //reload game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
@@ -147,6 +156,19 @@ public class scr_game_controller : MonoBehaviour
         {
             deactivatedElement.SetActive(false);
         }
+    }
 
+    public void activateGameOverScreenElements() {
+        foreach (GameObject deactivatedElement in endscreenElements)
+        {
+            deactivatedElement.SetActive(true);
+        }
+    }
+
+    public void deactivateGameOverScreenElements() {
+        foreach (GameObject deactivatedElement in endscreenElements)
+        {
+            deactivatedElement.SetActive(false);
+        }
     }
 }
