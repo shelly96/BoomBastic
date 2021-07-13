@@ -6,8 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class scr_game_controller : MonoBehaviour
 {
+    enum State { 
+        titleScreen,
+        gameScreen,
+        endScreen
+    }
 
     public GameObject player;
+    private State currentState = State.titleScreen;
 
     // title
     [SerializeField] private bool skipTitleScreen;
@@ -73,45 +79,64 @@ public class scr_game_controller : MonoBehaviour
     void Update()
     {
 
-        if (heartList[0].activeSelf)
-        {
-            //init healthPoints
-            int currentHealthPoints = player.GetComponent<scr_player>().healthPoints;
+        switch (currentState) {
+            case State.titleScreen:
+                // ENTER
+                break;
 
-            //init hearts/ lives
-            for (int i = 0; i < maxHealthPoints; i++)
-            {
-                if (i < currentHealthPoints)
+            case State.gameScreen:
+                if (heartList[0].activeSelf)
                 {
-                    heartList[i].GetComponent<scr_heart>().on = true;
+                    //init healthPoints
+                    int currentHealthPoints = player.GetComponent<scr_player>().healthPoints;
+
+                    //init hearts/ lives
+                    for (int i = 0; i < maxHealthPoints; i++)
+                    {
+                        if (i < currentHealthPoints)
+                        {
+                            heartList[i].GetComponent<scr_heart>().on = true;
+                        }
+                        else
+                        {
+                            heartList[i].GetComponent<scr_heart>().on = false;
+                        }
+
+                    }
+
+
+                    if (currentHealthPoints <= 0)
+                    {
+                        deactivateGameplayElements();
+                        activateGameOverScreenElements();
+
+                        currentState = State.endScreen;
+                    }
                 }
-                else
+
+                //update score
+                if (scoreObject.activeSelf)
                 {
-                    heartList[i].GetComponent<scr_heart>().on = false;
+                    coinValue = CollectCoin.coin;
+                    scoreObject.GetComponent<Text>().text = scoreTxt + coinValue.ToString();
                 }
+                break;
 
-            }
-        
+            case State.endScreen:
+                // ENTER
+                break;
 
-            if (currentHealthPoints <= 0)
-            {
-                deactivateGameplayElements();
-                activateGameOverScreenElements();
-            }
         }
 
-        //update score
-        if (scoreObject.activeSelf)
-        {
-            coinValue = CollectCoin.coin;
-            scoreObject.GetComponent<Text>().text = scoreTxt + coinValue.ToString();
-        }
+       
         
     }
 
     public void play() {
         deactivateTitleScreenElements();
         activateGameplayElements();
+
+        currentState = State.gameScreen;
     }
 
     public void replay() {
