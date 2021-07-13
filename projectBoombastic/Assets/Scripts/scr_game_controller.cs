@@ -81,7 +81,11 @@ public class scr_game_controller : MonoBehaviour
 
         switch (currentState) {
             case State.titleScreen:
-                // ENTER
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    play();
+                }
+                
                 break;
 
             case State.gameScreen:
@@ -123,7 +127,11 @@ public class scr_game_controller : MonoBehaviour
                 break;
 
             case State.endScreen:
-                // ENTER
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    replay();
+                }
+                    
                 break;
 
         }
