@@ -5,12 +5,16 @@ using UnityEngine;
 public class scr_bomb_spawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> bombPrefabs;
-    [SerializeField] private float spawnTime = 5.0f;
+    [SerializeField] private float spawnTime = 4.0f;
     [SerializeField] private int missingRedBombs = 3;
+
+    [SerializeField] private float moreBombsInterval = 10.0f;
 
     private float counter = 0.0f;
 
     private int redBombCounter = 0;
+
+    private float startTime = 0.0f;
 
 
     // get Scrennbounds
@@ -51,6 +55,12 @@ public class scr_bomb_spawner : MonoBehaviour
                 GameObject bomb = Instantiate(bombObject) as GameObject;
                 bomb.transform.position = spawnPos;
             }
+        }
+
+        //increase spawn time every 10 sec
+        if(Time.time > startTime + moreBombsInterval && spawnTime > 0.5f) {
+            spawnTime = spawnTime - 0.1f;
+            startTime = Time.time;
         }
     }
 }
