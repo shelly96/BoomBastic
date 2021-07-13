@@ -1357,14 +1357,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1703844308}
-  skipTitleScreen: 1
+  skipTitleScreen: 0
   gameplayElements:
   - {fileID: 1703844308}
   - {fileID: 519796382}
   - {fileID: 1812347753}
   - {fileID: 1308796937}
   - {fileID: 1110445119}
-  - {fileID: 673164353}
   titlescreenElements:
   - {fileID: 1304791127}
   heartsPrefabs: {fileID: 6555197669731569305, guid: d4fd76e400f2295468262fded8dea241, type: 3}

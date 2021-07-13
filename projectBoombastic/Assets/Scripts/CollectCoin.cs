@@ -20,7 +20,7 @@ public class CollectCoin : MonoBehaviour
 
         Debug.Log("Detected Collision");
         if(other.transform.tag == "Coin"){
-            coin += 1;
+            coin += 10;
 
             // move to the top left
             Vector2 spawnPos = new Vector2 ( (Random.Range((-screenBounds.x+7), (screenBounds.x-7))), (Random.Range((screenBounds.y - 7), (screenBounds.y - 8))) );
