@@ -54,9 +54,9 @@ public class scr_bomb_behaviour : MonoBehaviour
 
         //stop bomb on the boat
         if(hitBoat) {
-            // GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -screenBounds.y);
+            //GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -screenBounds.y);
             //GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity * 0.50f;
-            //GetComponent<Rigidbody2D>().mass *= 2f;
+            GetComponent<Rigidbody2D>().drag = 1.5f;
         }
 
         //destroy bombs that miss the water
@@ -72,8 +72,10 @@ public class scr_bomb_behaviour : MonoBehaviour
             case "Wave_2":
                 // TODO add sound 
                 break;
-            case "Boat":
+            case "BoatBody":
                 hitBoat = true;
+
+                
                 // TODO add sound
                 break;
         }
@@ -146,10 +148,13 @@ public class scr_bomb_behaviour : MonoBehaviour
 
     public void pickUp() {
         pickedUp = true;
+        hitBoat = false;
+        GetComponent<Rigidbody2D>().drag = 0;
     }
 
     public void release() {
         pickedUp = false;
+        GetComponent<Rigidbody2D>().drag = 0;
     }
 
 }

@@ -200,6 +200,8 @@ public class scr_player : MonoBehaviour
             }
 
             pickedUpObject.GetComponent<Rigidbody2D>().mass = 0f;
+            //pickedUpObject.GetComponent<Rigidbody2D>().angularVelocity = 0f;
+            pickedUpObject.GetComponent<Rigidbody2D>().freezeRotation = true;
         }
         else
         {
@@ -231,6 +233,7 @@ public class scr_player : MonoBehaviour
         pickedUpObject.GetComponent<Rigidbody2D>().mass = 1f;
         pickedUpObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         pickedUpObject.GetComponent<Rigidbody2D>().AddForce(directionVector, ForceMode2D.Impulse);
+        pickedUpObject.GetComponent<Rigidbody2D>().freezeRotation = false;
         pickedUpObject.GetComponent<scr_bomb_behaviour>().release();
         pickedUpObject = null;
 
