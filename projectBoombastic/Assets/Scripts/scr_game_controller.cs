@@ -204,6 +204,10 @@ public class scr_game_controller : MonoBehaviour
         foreach (GameObject deactivatedElement in endscreenElements)
         {
             deactivatedElement.SetActive(true);
+
+            if (deactivatedElement.name == "Boat") {
+                deactivatedElement.GetComponent<scr_boat>().isSinking = true;
+            }
         }
 
         //activate hearts and score
@@ -220,5 +224,9 @@ public class scr_game_controller : MonoBehaviour
         {
             deactivatedElement.SetActive(false);
         }
+
+
+        
+
     }
 }

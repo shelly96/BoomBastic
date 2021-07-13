@@ -10,7 +10,7 @@ public class scr_boat : MonoBehaviour
     [SerializeField] private float sinkingSpeed = 0.01f;
 
     [SerializeField] private int maxShipHits = 5;
-    private bool isSinking = false;
+    public bool isSinking = false;
 
     [SerializeField] private float angle;
     [SerializeField] private float height;
@@ -43,7 +43,7 @@ public class scr_boat : MonoBehaviour
 
         }
         else {
-            sinkingDifference += sinkingSpeed*4;
+            sinkingDifference += sinkingSpeed*5;
         }
 
 
