@@ -51,6 +51,9 @@ public class scr_game_controller : MonoBehaviour
             heart.transform.position = spawnPos;
 
             heartList.Add(heart.gameObject);
+
+            //manually deactivate hearts
+            heartList[i].SetActive(false);
             Debug.Log("added");
 
             //set next heart position
@@ -59,13 +62,16 @@ public class scr_game_controller : MonoBehaviour
         }
 
         scoreObject = GameObject.Find("Score");
-        
+        //manually deactivate score
+        scoreObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (heartList[0].activeSelf)
+        {
             //healthPoints
             int currentHealthPoints = player.GetComponent<scr_player>().healthPoints;
 
@@ -82,17 +88,21 @@ public class scr_game_controller : MonoBehaviour
                 }
 
             }
+        
 
             if (currentHealthPoints <= 0)
             {
                 //GAME OVER
             }
-        
+        }
 
         //update score
-        coinVallue = CollectCoin.coin;
-        scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
-
+        if (scoreObject.activeSelf)
+        {
+            coinVallue = CollectCoin.coin;
+            scoreObject.GetComponent<Text>().text = scoreTxt + coinVallue.ToString();
+        }
+        
     }
 
     public void play() {
@@ -121,6 +131,14 @@ public class scr_game_controller : MonoBehaviour
         {
             activatedElement.SetActive(true);
         }
+
+        //activate hearts and score
+        for (int i = 0; i < maxHealthPoints; i++)
+        {
+            heartList[i].SetActive(true);
+        }
+
+        scoreObject.SetActive(true);
     }
 
     void deactivateGameplayElements()
