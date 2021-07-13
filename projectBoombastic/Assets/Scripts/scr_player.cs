@@ -168,7 +168,7 @@ public class scr_player : MonoBehaviour
                 inAir = false;
                 animator.SetBool("inAir", inAir);
                 break;
-            case "BoatBody":
+            case "Boat":
                 inAir = false;
                 animator.SetBool("inAir", inAir);
                 break;
