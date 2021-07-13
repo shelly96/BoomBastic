@@ -23,7 +23,7 @@ public class CollectCoin : MonoBehaviour
             coin += 1;
 
             // move to the top left
-            Vector2 spawnPos = new Vector2 ( (Random.Range((-screenBounds.x+7), (screenBounds.x-7))), (screenBounds.y - 8) );
+            Vector2 spawnPos = new Vector2 ( (Random.Range((-screenBounds.x+7), (screenBounds.x-7))), (Random.Range((screenBounds.y - 7), (screenBounds.y - 8))) );
             other.transform.position = spawnPos;
         }
     }
