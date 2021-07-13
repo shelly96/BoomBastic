@@ -32,6 +32,7 @@ public class scr_game_controller : MonoBehaviour
 
     //score
     private GameObject scoreObject;
+    private GameObject scoreEndscreenObject;
     private const string scoreTxt = "Score: ";
     private int coinValue;
 
@@ -71,6 +72,7 @@ public class scr_game_controller : MonoBehaviour
         }
 
         scoreObject = GameObject.Find("Score");
+        scoreEndscreenObject = GameObject.Find("ScoreEndscreen");
         //manually deactivate score
         scoreObject.SetActive(false);
     }
@@ -122,11 +124,15 @@ public class scr_game_controller : MonoBehaviour
                 if (scoreObject.activeSelf)
                 {
                     coinValue = CollectCoin.coin;
-                    scoreObject.GetComponent<Text>().text = scoreTxt + coinValue.ToString();
+                    scoreObject.GetComponent<Text>().text = scoreTxt + coinValue.ToString();           
                 }
                 break;
 
             case State.endScreen:
+      
+                coinValue = CollectCoin.coin;
+                scoreEndscreenObject.GetComponent<Text>().text = coinValue.ToString();
+                
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     replay();
