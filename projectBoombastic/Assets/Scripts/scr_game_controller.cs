@@ -51,6 +51,9 @@ public class scr_game_controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //play sound
+        GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("ambient");
+
         maxHealthPoints = player.GetComponent<scr_player>().healthPoints;
 
         //init hearts/ lives
@@ -64,7 +67,6 @@ public class scr_game_controller : MonoBehaviour
 
             //manually deactivate hearts
             heartList[i].SetActive(false);
-            Debug.Log("added");
 
             //set next heart position
             x_pos -= 1;

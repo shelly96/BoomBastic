@@ -10,7 +10,6 @@ public class CollectCoin : MonoBehaviour
     private Vector2 screenBounds;
 
     private GameObject coinPrefab; 
-    [SerializeField] private AudioSource coinAudio;
 
     void Start()
     {
@@ -19,15 +18,16 @@ public class CollectCoin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
 
-        Debug.Log("Detected Collision");
+        Debug.Log("Coin");
         if(other.transform.tag == "Coin"){
             coin += 10;
 
-            // add sound
-            coinAudio.Play();
             // move to the top left
             Vector2 spawnPos = new Vector2 ( (Random.Range((-screenBounds.x+7), (screenBounds.x-7))), (Random.Range((screenBounds.y - 7), (screenBounds.y - 8))) );
             other.transform.position = spawnPos;
+
+            //play sound
+            GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("coin");
         }
     }
 }
