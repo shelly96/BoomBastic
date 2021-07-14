@@ -4,27 +4,32 @@ using UnityEngine;
 
 public class CollectCoin : MonoBehaviour
 {
+    public float speed = 5.0f; 
+    private Rigidbody2D rb;
 
-    [SerializeField] private List<GameObject> coinPrefabs;
     public static int coin = 0;
     private Vector2 screenBounds;
 
-    private GameObject coinPrefab; 
-
     void Start()
     {
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height, 0.0f));
+        rb = this.GetComponent<Rigidbody2D>(); 
+        rb.velocity = new Vector2(-speed, 0);
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height,0.0f));
     }
+  
+    void Update(){
+        if(transform.position.x < -screenBounds.x*2){
+            Destroy(this.gameObject);
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other){
 
-        Debug.Log("Coin");
-        if(other.transform.tag == "Coin"){
-            coin += 10;
-
-            // move to the top left
-            Vector2 spawnPos = new Vector2 ( (Random.Range((-screenBounds.x+7), (screenBounds.x-7))), (Random.Range((screenBounds.y - 7), (screenBounds.y - 8))) );
-            other.transform.position = spawnPos;
+        Debug.Log("Player");
+        if(other.transform.tag == "Player"){
+            coin += 10; 
+            Destroy(this.gameObject);
 
             //play sound
             GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("coin");
