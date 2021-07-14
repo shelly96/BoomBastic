@@ -673,7 +673,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551823746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.22, y: 4.89, z: 4126.684}
+  m_LocalPosition: {x: 0.44, y: 4.44, z: 4126.684}
   m_LocalScale: {x: 2.15, y: 2.15, z: 1}
   m_Children: []
   m_Father: {fileID: 1502452548}
@@ -2478,7 +2478,7 @@ MonoBehaviour:
   bombPrefabs:
   - {fileID: 2820479653558147393, guid: 6637d9fad5cc30c4b8e086c0bb482083, type: 3}
   - {fileID: 6347460946192091289, guid: 88baccc5b1c998c45bcdb02e6532c418, type: 3}
-  spawnTime: 4
+  spawnTime: 3
   missingRedBombs: 3
   moreBombsInterval: 10
 --- !u!4 &1812347755
