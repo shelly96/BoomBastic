@@ -13,8 +13,8 @@ public class scr_box_manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        x_coordinate = 9;
-        y_coordinate = 3;
+        x_coordinate = 8;
+        y_coordinate = -2;
 
         //spawn boxes in the begining
         while (counter > 0)
@@ -24,16 +24,10 @@ public class scr_box_manager : MonoBehaviour
             box.transform.position = spawnPos;
 
             //set next box higher to prevent collision
-            y_coordinate = y_coordinate + 2 ;
+            y_coordinate = y_coordinate + 0.5f ;
 
             this.counter--;
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
 }

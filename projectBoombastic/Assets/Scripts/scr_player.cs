@@ -154,11 +154,6 @@ public class scr_player : MonoBehaviour
 
         }
 
-        // Reset Position (DEBUG)
-        if (Input.GetKey(KeyCode.R))
-        {
-            reset();
-        }
 
     }
 

@@ -6,9 +6,15 @@ public class scr_box_behavior : MonoBehaviour
 {
     private Vector2 screenBounds;
 
+    // Score notification
+    [SerializeField] private GameObject minusScore;
+
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height, 0.0f));
     }
 
@@ -20,19 +26,18 @@ public class scr_box_behavior : MonoBehaviour
         if (-transform.position.y > screenBounds.y) {
             //play sound
             if (!GameObject.Find("Boat").GetComponent<scr_boat>().isSinking)
-            GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("water");
+            {
+                GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("water");
 
+                // Score notification
+                Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y + 2f);
+                GameObject tempMinusScore = Instantiate(minusScore);
+                tempMinusScore.transform.position = currentPosition;
+
+                // decrease Score
+                GameObject.Find("Player").GetComponent<CollectCoin>().addScore(-10);
+            }
             Destroy(this.gameObject);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D trigger)
-    {
-        
-        switch (trigger.name) {
-            case "Wave_2":
-                // TODO add sound 
-                break;
         }
     }
 

@@ -16,7 +16,6 @@ public class scr_game_controller : MonoBehaviour
     private State currentState = State.titleScreen;
 
     // title
-    [SerializeField] private bool skipTitleScreen;
     [SerializeField] private List<GameObject> gameplayElements;
     [SerializeField] private List<GameObject> titlescreenElements;
     [SerializeField] private List<GameObject> endscreenElements;
@@ -41,10 +40,6 @@ public class scr_game_controller : MonoBehaviour
         //Deactivate all gameplay elements at runtime to display the title screen
         deactivateGameplayElements();
         deactivateGameOverScreenElements();
-
-        if (skipTitleScreen) {
-            play();
-        }
 
     }
 
@@ -120,6 +115,13 @@ public class scr_game_controller : MonoBehaviour
 
                         currentState = State.endScreen;
                     }
+                }
+
+
+                // Reset Position (DEBUG)
+                if (Input.GetKey(KeyCode.R))
+                {
+                    replay();
                 }
 
                 //update score

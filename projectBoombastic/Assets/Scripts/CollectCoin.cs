@@ -10,6 +10,8 @@ public class CollectCoin : MonoBehaviour
     public static int coin = 0;
     private Vector2 screenBounds;
 
+    [SerializeField] private GameObject plusScore;
+
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>(); 
@@ -28,11 +30,32 @@ public class CollectCoin : MonoBehaviour
 
         Debug.Log("Player");
         if(other.transform.tag == "Player"){
-            coin += 10; 
+            addScore(10);
             Destroy(this.gameObject);
 
             //play sound
             GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("coin");
+
+            // Score notification
+            Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y + 0.5f);
+            GameObject tempPlusScore = Instantiate(plusScore);
+            tempPlusScore.transform.position = currentPosition;
+        }
+    }
+
+    public void addScore(int score) {
+        if (score > 0)
+        {
+            coin += score;
+        }
+        else {
+            if (coin + score < 0)
+            {
+                coin = 0;
+            }
+            else {
+                coin += score;
+            }
         }
     }
 }
