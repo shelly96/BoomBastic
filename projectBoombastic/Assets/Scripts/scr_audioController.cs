@@ -35,9 +35,15 @@ public class scr_audioController : MonoBehaviour
                 break;
             case "coin":
                 audioSources[2].playOnAwake = false;
-                audioSources[2].volume = 0.3f; 
+                audioSources[2].volume = 0.4f; 
                 audioSources[2].loop = false;
                 audioSources[2].Play();
+                break;
+            case "water":
+                audioSources[3].playOnAwake = false;
+                audioSources[3].volume = 0.2f;
+                audioSources[3].loop = false;
+                audioSources[3].Play();
                 break;
             default:
                 Debug.Log("Can't find audiofile");

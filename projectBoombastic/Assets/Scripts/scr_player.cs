@@ -75,7 +75,11 @@ public class scr_player : MonoBehaviour
         }
 
         // Detect when player has fallen off the boat 
-        if (-transform.position.y > screenBounds.y + 5) {
+        if (-transform.position.y > screenBounds.y +1) {
+            //play sound
+            if (!GameObject.Find("Boat").GetComponent<scr_boat>().isSinking)
+            GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("water");
+
             healthPoints = 0;
             // this.gameObject.SetActive(false);
         }
@@ -104,6 +108,7 @@ public class scr_player : MonoBehaviour
 
             // Apply jump force
             rb.AddForce(new Vector2(0, jumpForce * 100));
+
         }
 
         // Horizontal Movement

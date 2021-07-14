@@ -60,7 +60,10 @@ public class scr_bomb_behaviour : MonoBehaviour
         }
 
         //destroy bombs that miss the water
-        if(-transform.position.y > screenBounds.y +5) {
+        if(-transform.position.y > screenBounds.y) {
+            //play sound
+            if (!GameObject.Find("Boat").GetComponent<scr_boat>().isSinking)
+                GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("water");
             Destroy(this.gameObject);
         }
     }
