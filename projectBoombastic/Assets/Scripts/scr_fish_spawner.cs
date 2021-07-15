@@ -33,21 +33,10 @@ public class scr_fish_spawner : MonoBehaviour
             counter = 0.0f;
 
             // move to the bottom
-            Vector2 spawnPos = new Vector2((Random.Range((-screenBounds.x - 5), (screenBounds.x + 5))), (-screenBounds.y));
+            Vector2 spawnPos = new Vector2((Random.Range((screenBounds.x+1 ), (screenBounds.x + 10))), (-screenBounds.y + 0.5f));
 
             // initialized bomb 
             GameObject fishObject = fishPrefabs[Random.Range(0, fishPrefabs.Count)];
-
-            // spawn more smaler fishes
-            switch (fishObject.name)
-            {
-                case "hostileFish_1":
-                    break;
-                case "hostileFish_2":
-                    break;
-                case "hostileFish_3":
-                    break;
-            }
 
             GameObject fish = Instantiate(fishObject) as GameObject;
             fish.transform.position = spawnPos;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1876261483161494736}
   - component: {fileID: 6280434569502389198}
   - component: {fileID: -4379583015005504794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hostileFish_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7752157215223341643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,7 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd6445e208443a499a5fd140133569b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -3
+  movSpeed: 6
+  intervalSpeed: 0.004
+  angle: -45
+  height: 6
 --- !u!61 &-4379583015005504794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -107,10 +110,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.030404717, y: -0.013302073}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -121,5 +124,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.57}
+  m_Size: {x: 0.7719647, y: 0.36856887}
   m_EdgeRadius: 0

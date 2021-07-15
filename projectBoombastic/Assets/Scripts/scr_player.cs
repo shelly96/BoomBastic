@@ -200,7 +200,6 @@ public class scr_player : MonoBehaviour
             }
 
             pickedUpObject.GetComponent<Rigidbody2D>().mass = 0f;
-            //pickedUpObject.GetComponent<Rigidbody2D>().angularVelocity = 0f;
             pickedUpObject.GetComponent<Rigidbody2D>().freezeRotation = true;
         }
         else

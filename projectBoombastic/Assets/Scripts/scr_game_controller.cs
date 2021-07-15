@@ -119,11 +119,7 @@ public class scr_game_controller : MonoBehaviour
                 }
 
 
-                // Reset Position (DEBUG)
-                if (Input.GetKey(KeyCode.R))
-                {
-                    replay();
-                }
+               
 
                 //update score
                 if (scoreObject.activeSelf)
@@ -147,8 +143,12 @@ public class scr_game_controller : MonoBehaviour
 
         }
 
-       
-        
+
+        // Reset Position (DEBUG)
+        if (Input.GetKey(KeyCode.R))
+        {
+            replay();
+        }
     }
 
     public void play() {
