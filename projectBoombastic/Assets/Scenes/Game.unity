@@ -2153,7 +2153,7 @@ MonoBehaviour:
   - {fileID: 4805105061551853004, guid: 08277d777cd94c24e9f02333c81b3edf, type: 3}
   - {fileID: 8299080992584930042, guid: 3d7be7ed4a043ab41898119ad3ed60ec, type: 3}
   - {fileID: 7752157215223341643, guid: 24cd60087c994c84c8dc64b551bc4395, type: 3}
-  spawnTime: 10
+  spawnTime: 15
   moreFishInterval: 10
 --- !u!1 &1573034308
 GameObject:
