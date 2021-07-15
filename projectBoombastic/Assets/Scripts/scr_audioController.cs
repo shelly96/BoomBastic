@@ -23,27 +23,33 @@ public class scr_audioController : MonoBehaviour
         switch (audioClipName) {
             case "ambient":
                 audioSources[0].playOnAwake = true;
-                audioSources[0].volume = 0.3f;
+                audioSources[0].volume = 0.2f;
                 audioSources[0].loop = true;
                 audioSources[0].Play();
                 break;
-            case "explosion":
-                audioSources[1].playOnAwake = false;
-                audioSources[1].volume = 0.2f;
-                audioSources[1].loop = false;
+            case "ambient_birds":
+                audioSources[1].playOnAwake = true;
+                audioSources[1].volume = 0.1f;
+                audioSources[1].loop = true;
                 audioSources[1].Play();
-                break;
-            case "coin":
+                break;  
+            case "explosion":
                 audioSources[2].playOnAwake = false;
-                audioSources[2].volume = 0.4f; 
+                audioSources[2].volume = 0.5f;
                 audioSources[2].loop = false;
                 audioSources[2].Play();
                 break;
-            case "water":
+            case "coin":
                 audioSources[3].playOnAwake = false;
-                audioSources[3].volume = 0.2f;
+                audioSources[3].volume = 0.4f; 
                 audioSources[3].loop = false;
                 audioSources[3].Play();
+                break;
+            case "water":
+                audioSources[4].playOnAwake = false;
+                audioSources[4].volume = 0.2f;
+                audioSources[4].loop = false;
+                audioSources[4].Play();
                 break;
             default:
                 Debug.Log("Can't find audiofile");
