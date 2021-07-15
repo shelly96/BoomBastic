@@ -48,6 +48,7 @@ public class scr_game_controller : MonoBehaviour
     {
         //play sound
         GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("ambient");
+        GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("ambient_birds");
 
         maxHealthPoints = player.GetComponent<scr_player>().healthPoints;
 
