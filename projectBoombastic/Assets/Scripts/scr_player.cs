@@ -41,6 +41,7 @@ public class scr_player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer.color = new Color(255, 255, 255);
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height, 0.0f));
         rb = GetComponent<Rigidbody2D>();
         originalPos = new Vector2(transform.position.x, transform.position.y);
@@ -83,7 +84,26 @@ public class scr_player : MonoBehaviour
             healthPoints = 0;
             // this.gameObject.SetActive(false);
         }
-        
+
+
+        float tempColor = spriteRenderer.color.g;
+
+        if (tempColor < 1)
+        {
+            tempColor += 0.0025f;
+
+            spriteRenderer.color = new Color(255, tempColor, tempColor);
+        }
+        else {
+            spriteRenderer.color = new Color(1, 1, 1);
+        }
+
+        // Reset Position (DEBUG)
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            takeDamage();
+        }
+
     }
 
     private void FixedUpdate()
@@ -239,9 +259,12 @@ public class scr_player : MonoBehaviour
     }
 
     public void takeDamage() {
+        spriteRenderer.color = new Color(255, 0, 0);
+
         if (healthPoints > 0) {
             healthPoints--;
         }
+
     }
 
 
