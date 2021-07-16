@@ -71,6 +71,12 @@ public class scr_audioController : MonoBehaviour
                 audioSources[7].pitch = 1.2f;
                 audioSources[7].Play();
                 break;
+            case "gameOver":
+                audioSources[8].playOnAwake = false;
+                audioSources[8].volume = 0.4f;
+                audioSources[8].loop = false;
+                audioSources[8].Play();
+                break;
             default:
                 Debug.Log("Can't find audiofile");
                 break;

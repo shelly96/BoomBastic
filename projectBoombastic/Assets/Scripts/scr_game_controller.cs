@@ -119,6 +119,9 @@ public class scr_game_controller : MonoBehaviour
                         activateGameOverScreenElements();
 
                         currentState = State.endScreen;
+
+                        //play sound
+                        GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("gameOver");
                     }
                 }
 
