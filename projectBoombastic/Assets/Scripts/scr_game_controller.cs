@@ -261,4 +261,10 @@ public class scr_game_controller : MonoBehaviour
         activateTitleScreenElements();
     }
 
+    public void exitGame()
+    {
+        Application.Quit();
+    }
+
+
 }
