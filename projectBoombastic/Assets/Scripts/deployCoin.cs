@@ -16,7 +16,7 @@ public class deployCoin : MonoBehaviour
 
     private void spawnCoin(){
         GameObject c = Instantiate(coinPrefab) as GameObject;
-        c.transform.position = new Vector2(screenBounds.x*2, Random.Range(-screenBounds.y+4, screenBounds.y-6));
+        c.transform.position = new Vector2(screenBounds.x*2, Random.Range(GameObject.Find("Boat").transform.position.y, GameObject.Find("Boat").transform.position.y+2));
     }
 
     IEnumerator coinWave(){

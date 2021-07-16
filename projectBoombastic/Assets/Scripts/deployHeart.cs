@@ -14,7 +14,7 @@ public class deployHeart : MonoBehaviour
     }
 
     void Update(){
-        if(CollectCoin.coin % 100 == 0 && CollectCoin.coin!= 0 && this.heartWasDeployed==true){
+        if(CollectCoin.coin % 50 == 0 && CollectCoin.coin!= 0 && this.heartWasDeployed==true){
             spawnHeart();
             this.heartWasDeployed=false;
         }
@@ -22,7 +22,7 @@ public class deployHeart : MonoBehaviour
 
     private void spawnHeart(){
         GameObject h = Instantiate(heartPrefab) as GameObject;
-        h.transform.position = new Vector2(screenBounds.x*2, Random.Range(-screenBounds.y+4, screenBounds.y-6));
+        h.transform.position = new Vector2(screenBounds.x*2, Random.Range(GameObject.Find("Boat").transform.position.y, GameObject.Find("Boat").transform.position.y+2));
     }
 
 
