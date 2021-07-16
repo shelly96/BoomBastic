@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollectHeart : MonoBehaviour
 {
-    public float speed = 5.0f; 
+    public float speed = 2.0f; 
     private Rigidbody2D rb;
 
     public static int heart = 0;
@@ -32,7 +32,7 @@ public class CollectHeart : MonoBehaviour
         if(other.transform.tag == "Player"){
 
             // heathpoints erhöhen
-            if(GameObject.Find("Player").GetComponent<scr_player>().healthPoints<5){
+            if(GameObject.Find("Player").GetComponent<scr_player>().healthPoints<3){
                 GameObject.Find("Player").GetComponent<scr_player>().healthPoints += 1;
             }
 

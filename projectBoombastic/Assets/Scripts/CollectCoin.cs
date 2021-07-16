@@ -33,6 +33,7 @@ public class CollectCoin : MonoBehaviour
             addScore(10);
             Destroy(this.gameObject);
 
+            GameObject.Find("HeartSpawner").GetComponent<deployHeart>().setHeartWasDeployed(true);
             //play sound
             GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("coin");
 
