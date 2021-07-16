@@ -264,6 +264,11 @@ public class scr_game_controller : MonoBehaviour
         activateTitleScreenElements();
     }
 
+    public void playUISound() {
+        //play sound
+        GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("woodUI");
+    }
+
     public void exitGame()
     {
         Application.Quit();

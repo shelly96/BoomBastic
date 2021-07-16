@@ -77,6 +77,12 @@ public class scr_audioController : MonoBehaviour
                 audioSources[8].loop = false;
                 audioSources[8].Play();
                 break;
+            case "woodUI":
+                audioSources[9].playOnAwake = false;
+                audioSources[9].volume = 0.4f;
+                audioSources[9].loop = false;
+                audioSources[9].Play();
+                break;
             default:
                 Debug.Log("Can't find audiofile");
                 break;
