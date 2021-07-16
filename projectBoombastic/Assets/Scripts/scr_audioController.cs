@@ -7,7 +7,7 @@ public class scr_audioController : MonoBehaviour
 {
 
     public List<AudioClip> audioClips = new List<AudioClip>();
-    public List<AudioSource> audioSources = new List<AudioSource>();
+    private List<AudioSource> audioSources = new List<AudioSource>();
 
     // Start is called before the first frame update
     void Start()
