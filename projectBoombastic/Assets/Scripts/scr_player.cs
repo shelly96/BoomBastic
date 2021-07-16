@@ -131,6 +131,9 @@ public class scr_player : MonoBehaviour
             // Apply jump force
             rb.AddForce(new Vector2(0, jumpForce* 1000 * Time.deltaTime));
 
+            //play sound
+            GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("jump");
+
         }
 
         // Horizontal Movement
