@@ -35,7 +35,7 @@ public class scr_audioController : MonoBehaviour
                 break;  
             case "explosion":
                 audioSources[2].playOnAwake = false;
-                audioSources[2].volume = 0.4f;
+                audioSources[2].volume = 0.3f;
                 audioSources[2].loop = false;
                 audioSources[2].Play();
                 break;
@@ -63,6 +63,13 @@ public class scr_audioController : MonoBehaviour
                 audioSources[6].loop = false;
                 audioSources[6].pitch = 1.1f;
                 audioSources[6].Play();
+                break;
+            case "hit":
+                audioSources[7].playOnAwake = false;
+                audioSources[7].volume = 0.4f;
+                audioSources[7].loop = false;
+                audioSources[7].pitch = 1.2f;
+                audioSources[7].Play();
                 break;
             default:
                 Debug.Log("Can't find audiofile");

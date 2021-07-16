@@ -266,6 +266,9 @@ public class scr_player : MonoBehaviour
     public void takeDamage() {
         spriteRenderer.color = new Color(255, 0, 0);
 
+        //play sound
+        GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("hit");
+
         if (healthPoints > 0) {
             healthPoints--;
         }
