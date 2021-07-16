@@ -979,6 +979,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2e44ee4baceddfa45a334dd481d02852, type: 3}
   - {fileID: 8300000, guid: 1378f0e183a967d48b3352acbd97d30a, type: 3}
   - {fileID: 8300000, guid: 449c3cdcfb89c1345b7706d724e7817a, type: 3}
+  - {fileID: 8300000, guid: 5fba7a2b3d4c0dd469e3ad7b35235afa, type: 3}
 --- !u!4 &604670939
 Transform:
   m_ObjectHideFlags: 0
@@ -987,7 +988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604670937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6907623, y: 1.1252053, z: 226.30867}
+  m_LocalPosition: {x: -15.58, y: 4.67, z: 226.30867}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2062,7 +2063,7 @@ RectTransform:
   - {fileID: 171157400}
   - {fileID: 1097254555}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2156,6 +2157,7 @@ MonoBehaviour:
   - {fileID: 1308796937}
   - {fileID: 776000332}
   - {fileID: 1555206431}
+  - {fileID: 1574692585}
   titlescreenElements:
   - {fileID: 1304791127}
   endscreenElements:
@@ -2476,7 +2478,7 @@ Transform:
   - {fileID: 1573034309}
   - {fileID: 551823748}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1555206431
 GameObject:
@@ -2558,6 +2560,50 @@ Transform:
   - {fileID: 1407318714}
   m_Father: {fileID: 1502452548}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1574692585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1574692587}
+  - component: {fileID: 1574692586}
+  m_Layer: 0
+  m_Name: HeartSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1574692586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574692585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caad43cfcaa208c4eb158a67aabda75e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartPrefab: {fileID: 6125419158012972161, guid: c642a8d551bd8b044b4080fcd3c85069, type: 3}
+--- !u!4 &1574692587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574692585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.02, y: 2.85, z: 457.91562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1583495988
 GameObject:
@@ -2854,7 +2900,7 @@ MonoBehaviour:
   animator: {fileID: 1703844315}
   spriteRenderer: {fileID: 1703844311}
   movementSpeed: 5
-  jumpForce: 4.5
+  jumpForce: 23
   pickUpZone: {fileID: 471168198}
   pickUpRange: 0.8
   pickUpRadius: 0.5
@@ -2875,7 +2921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  plusScore: {fileID: 0}
+  plusScore: {fileID: 8213726066299314453, guid: e957f1607411a6646ad9466b022aa268, type: 3}
 --- !u!95 &1703844315
 Animator:
   serializedVersion: 3
@@ -3138,7 +3184,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1869114668
 GameObject:
@@ -3333,7 +3379,7 @@ RectTransform:
   - {fileID: 1583495989}
   - {fileID: 803493867}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3509,7 +3555,7 @@ RectTransform:
   - {fileID: 188398719}
   - {fileID: 339026091}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

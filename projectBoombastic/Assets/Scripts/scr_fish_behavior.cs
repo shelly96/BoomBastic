@@ -33,16 +33,16 @@ public class scr_fish_behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        counter += intervalSpeed;
+        counter += intervalSpeed*Time.deltaTime;
 
         // y position 
-        float newY =  height* Mathf.Sin(counter);
+        float newY =  height* Mathf.Sin(counter) ;
 
         // x position
-        float newX = counter * movSpeed;
+        float newX = counter * movSpeed ;
 
         // rotation
-        float newAngle =  angle * Mathf.Cos(counter);
+        float newAngle =  angle * Mathf.Cos(counter) ;
 
         
         tf.SetPositionAndRotation(new Vector3(originalPos.x - newX, originalPos.y + newY, 0), Quaternion.Euler(new Vector3(0, 0, newAngle)));

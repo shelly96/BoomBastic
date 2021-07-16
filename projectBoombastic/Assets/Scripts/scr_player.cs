@@ -87,11 +87,12 @@ public class scr_player : MonoBehaviour
         }
 
 
+        // Red sprite flash
         float tempColor = spriteRenderer.color.g;
 
         if (tempColor < 1)
         {
-            tempColor += 0.005f;
+            tempColor += 1.5f * Time.deltaTime;
 
             spriteRenderer.color = new Color(255, tempColor, tempColor);
         }
@@ -128,7 +129,7 @@ public class scr_player : MonoBehaviour
             rb.velocity = Vector2.zero;
 
             // Apply jump force
-            rb.AddForce(new Vector2(0, jumpForce * 100));
+            rb.AddForce(new Vector2(0, jumpForce* 1000 * Time.deltaTime));
 
         }
 

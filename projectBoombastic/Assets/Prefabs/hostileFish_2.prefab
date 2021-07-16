@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movSpeed: 5
-  intervalSpeed: 0.0051
+  intervalSpeed: 1
   angle: -40
   height: 7.5
 --- !u!61 &-1432805211500866288
