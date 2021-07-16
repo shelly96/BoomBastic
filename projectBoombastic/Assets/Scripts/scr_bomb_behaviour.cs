@@ -14,6 +14,7 @@ public class scr_bomb_behaviour : MonoBehaviour
     [SerializeField] private float explosionDelay = 0.3f;
     private float explosionTime;
     private bool hitBoat = false;
+    private bool firstContact = true;
     private bool pickedUp = false;
     private GameObject player;
 
@@ -75,7 +76,12 @@ public class scr_bomb_behaviour : MonoBehaviour
 
         if (first_collision_word == "Boat" || first_collision_word == "box" || first_collision_word == "treasure") {
             hitBoat = true;
-            // TODO add sound
+            // play sound first time
+            if (firstContact) {
+                GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("wood");
+                firstContact = false;
+            }
+            
         }
         
     }

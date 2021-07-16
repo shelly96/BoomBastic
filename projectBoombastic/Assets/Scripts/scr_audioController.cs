@@ -35,7 +35,7 @@ public class scr_audioController : MonoBehaviour
                 break;  
             case "explosion":
                 audioSources[2].playOnAwake = false;
-                audioSources[2].volume = 0.5f;
+                audioSources[2].volume = 0.4f;
                 audioSources[2].loop = false;
                 audioSources[2].Play();
                 break;
@@ -50,6 +50,12 @@ public class scr_audioController : MonoBehaviour
                 audioSources[4].volume = 0.2f;
                 audioSources[4].loop = false;
                 audioSources[4].Play();
+                break;
+            case "wood":
+                audioSources[5].playOnAwake = false;
+                audioSources[5].volume = 0.3f;
+                audioSources[5].loop = false;
+                audioSources[5].Play();
                 break;
             default:
                 Debug.Log("Can't find audiofile");
