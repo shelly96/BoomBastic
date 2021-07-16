@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   shotAngle: 6
-  bombTimer: 5
+  bombTimer: 5.5
   explosionRadius: 3
   explosionPower: 325
   explosionEffect: {fileID: 6125338416693736092, guid: e5e36f5995ab86649bd5d8dd9f50ff41, type: 3}

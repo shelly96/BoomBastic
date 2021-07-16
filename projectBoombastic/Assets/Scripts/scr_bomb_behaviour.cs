@@ -9,7 +9,7 @@ public class scr_bomb_behaviour : MonoBehaviour
     [SerializeField] private float shotAngle = 6f;
     [SerializeField] private float bombTimer = 5f;
     [SerializeField] private float explosionRadius = 2f; 
-    [SerializeField] private float explosionPower = 150f;
+    [SerializeField] private float explosionPower = 275f;
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private float explosionDelay = 0.3f;
     private float explosionTime;
@@ -70,16 +70,14 @@ public class scr_bomb_behaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        switch (collision.collider.name) {
-            case "Wave_2":
-                // TODO add sound 
-                break;
-            case "BoatBody":
-                hitBoat = true;
-                // TODO add sound
-                break;
+
+        string first_collision_word = collision.collider.name.Split('_')[0];
+
+        if (first_collision_word == "Boat" || first_collision_word == "box" || first_collision_word == "treasure") {
+            hitBoat = true;
+            // TODO add sound
         }
+        
     }
 
     private void Explode(){
@@ -110,14 +108,11 @@ public class scr_bomb_behaviour : MonoBehaviour
                 switch (first_word) {
                     
                     case "Player":
-                        //add force, but boat has no Rigidbody so you get an error
                         nearbyObject.GetComponent<scr_player>().takeDamage();
-                        nearbyObject.GetComponent<Rigidbody2D>().AddForce(direction * explosionPower);
+                        nearbyObject.GetComponent<Rigidbody2D>().AddForce(direction.normalized * explosionPower);
                         Debug.Log("Player got some damage!");
                         break;
                     case "Boat":
-                         //TODO add boat damage
-
                         nearbyObject.GetComponent<scr_boat>().takeDamage();
                         Debug.Log("Boat got some damage!");
 
