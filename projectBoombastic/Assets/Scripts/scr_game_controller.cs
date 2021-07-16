@@ -19,6 +19,8 @@ public class scr_game_controller : MonoBehaviour
     [SerializeField] private List<GameObject> gameplayElements;
     [SerializeField] private List<GameObject> titlescreenElements;
     [SerializeField] private List<GameObject> endscreenElements;
+    [SerializeField] private List<GameObject> howToPlayElements;
+
 
     //lives
     private int maxHealthPoints;
@@ -40,7 +42,7 @@ public class scr_game_controller : MonoBehaviour
         //Deactivate all gameplay elements at runtime to display the title screen
         deactivateGameplayElements();
         deactivateGameOverScreenElements();
-
+        deactivateHowToPLayScreenElements();
     }
 
     // Start is called before the first frame update
@@ -229,9 +231,45 @@ public class scr_game_controller : MonoBehaviour
         {
             deactivatedElement.SetActive(false);
         }
-
-
-        
-
     }
+
+    void activateHowToPlayScreenElements()
+    {
+        foreach (GameObject activatedElement in howToPlayElements)
+        {
+            activatedElement.SetActive(true);
+        }
+    }
+
+    public void deactivateHowToPLayScreenElements() {
+        foreach (GameObject deactivatedElement in howToPlayElements)
+        {
+            deactivatedElement.SetActive(false);
+        }
+    }
+
+    public void showHowToPlayWindow() {
+        activateHowToPlayScreenElements();
+
+        //disable hover function of HowToPlayButton
+        foreach (GameObject element in titlescreenElements)
+        {
+            if (element.name == "HowToPlayButton") {
+                element.GetComponent<Button>().interactable = false;
+            }
+        }
+    }
+
+    public void hideHowToPlayWindow() {
+        deactivateHowToPLayScreenElements();
+
+        //disable hover function of HowToPlayButton
+        foreach (GameObject element in titlescreenElements)
+        {
+            if (element.name == "HowToPlayButton") {
+                element.GetComponent<Button>().interactable = true;
+            }
+        }
+    }
+
 }
