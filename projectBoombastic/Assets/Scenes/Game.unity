@@ -529,6 +529,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 178691537525574747, guid: 3d7be7ed4a043ab41898119ad3ed60ec, type: 3}
   m_PrefabInstance: {fileID: 873965939}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &382359940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 382359941}
+  - component: {fileID: 382359943}
+  - component: {fileID: 382359942}
+  m_Layer: 5
+  m_Name: LMU
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &382359941
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382359940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1304791131}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -521}
+  m_SizeDelta: {x: 340, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &382359942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382359940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 17
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: LMU - Multimedia-Programmierung 2021
+--- !u!222 &382359943
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382359940}
+  m_CullTransparentMesh: 1
 --- !u!1 &406550529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,6 +1087,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5a44b753dbd2add488ba7741573ced83, type: 3}
   - {fileID: 8300000, guid: aad0f3abcdb7588419a886bc12101bb7, type: 3}
   - {fileID: 8300000, guid: 601dd4f4d3809e7498ea92c090f40e9d, type: 3}
+  - {fileID: 8300000, guid: fe5e80c12813e6b428c3ce8969441c04, type: 3}
 --- !u!4 &604670939
 Transform:
   m_ObjectHideFlags: 0
@@ -2259,6 +2339,7 @@ RectTransform:
   - {fileID: 171157400}
   - {fileID: 1097254555}
   - {fileID: 1315365563}
+  - {fileID: 382359941}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

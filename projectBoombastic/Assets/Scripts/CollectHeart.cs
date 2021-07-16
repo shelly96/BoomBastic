@@ -39,7 +39,7 @@ public class CollectHeart : MonoBehaviour
             Destroy(this.gameObject);
 
             //play sound
-            GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("coin");
+            GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("heal");
 
             // Score notification
             Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y + 0.5f);

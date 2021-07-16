@@ -83,6 +83,12 @@ public class scr_audioController : MonoBehaviour
                 audioSources[9].loop = false;
                 audioSources[9].Play();
                 break;
+            case "heal":
+                audioSources[10].playOnAwake = false;
+                audioSources[10].volume = 0.4f;
+                audioSources[10].loop = false;
+                audioSources[10].Play();
+                break;
             default:
                 Debug.Log("Can't find audiofile");
                 break;

@@ -101,10 +101,10 @@ public class scr_player : MonoBehaviour
         }
 
         // Reset Position (DEBUG)
-        if (Input.GetKeyUp(KeyCode.F))
+        /*if (Input.GetKeyUp(KeyCode.F))
         {
             takeDamage();
-        }
+        }*/
 
     }
 
