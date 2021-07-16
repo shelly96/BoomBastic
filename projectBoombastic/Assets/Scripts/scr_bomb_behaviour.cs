@@ -74,10 +74,10 @@ public class scr_bomb_behaviour : MonoBehaviour
 
         string first_collision_word = collision.collider.name.Split('_')[0];
 
-        if (first_collision_word == "Boat" || first_collision_word == "box" || first_collision_word == "treasure") {
+        if ((first_collision_word == "Boat" || first_collision_word == "box" || first_collision_word == "treasure") && pickedUp == false ) {
             hitBoat = true;
             // play sound first time
-            if (firstContact) {
+            if (firstContact ) {
                 GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("wood");
                 firstContact = false;
             }
