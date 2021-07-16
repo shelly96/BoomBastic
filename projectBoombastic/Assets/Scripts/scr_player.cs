@@ -41,6 +41,7 @@ public class scr_player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         spriteRenderer.color = new Color(255, 255, 255);
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height, 0.0f));
         rb = GetComponent<Rigidbody2D>();
@@ -90,7 +91,7 @@ public class scr_player : MonoBehaviour
 
         if (tempColor < 1)
         {
-            tempColor += 0.0025f;
+            tempColor += 0.005f;
 
             spriteRenderer.color = new Color(255, tempColor, tempColor);
         }

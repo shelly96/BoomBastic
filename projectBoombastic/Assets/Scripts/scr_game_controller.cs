@@ -39,6 +39,8 @@ public class scr_game_controller : MonoBehaviour
 
     private void Awake()
     {
+        activateTitleScreenElements();
+
         //Deactivate all gameplay elements at runtime to display the title screen
         deactivateGameplayElements();
         deactivateGameOverScreenElements();
@@ -250,26 +252,13 @@ public class scr_game_controller : MonoBehaviour
 
     public void showHowToPlayWindow() {
         activateHowToPlayScreenElements();
+        deactivateTitleScreenElements();
 
-        //disable hover function of HowToPlayButton
-        foreach (GameObject element in titlescreenElements)
-        {
-            if (element.name == "HowToPlayButton") {
-                element.GetComponent<Button>().interactable = false;
-            }
-        }
     }
 
     public void hideHowToPlayWindow() {
         deactivateHowToPLayScreenElements();
-
-        //disable hover function of HowToPlayButton
-        foreach (GameObject element in titlescreenElements)
-        {
-            if (element.name == "HowToPlayButton") {
-                element.GetComponent<Button>().interactable = true;
-            }
-        }
+        activateTitleScreenElements();
     }
 
 }
