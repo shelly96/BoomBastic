@@ -5,15 +5,12 @@ using UnityEngine;
 public class scr_bomb_spawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> bombPrefabs;
-    [SerializeField] private float spawnTime = 4.0f;
+    [SerializeField] private float spawnTime = 3.0f;
     [SerializeField] private int missingRedBombs = 3;
-
     [SerializeField] private float moreBombsInterval = 10.0f;
 
-    private float counter = 0.0f;
-
+    private float pastTime = 0.0f;
     private int redBombCounter = 0;
-
     private float startTime = 0.0f;
 
 
@@ -29,14 +26,16 @@ public class scr_bomb_spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // spawn a bomb every x seconds
-        counter += Time.deltaTime;
+        // increase pastTime
+        pastTime += Time.deltaTime;
 
-        if(counter >= spawnTime) 
+        // spawn a bomb every x seconds from the spawnTime
+        if(pastTime >= spawnTime) 
         {
-            counter = 0.0f;
+            // reset pastTime
+            pastTime = 0.0f;
 
-            // move to the top left
+            // set the spawn position at the top left above the scene
             Vector2 spawnPos = new Vector2 ( (Random.Range((-screenBounds.x - 10), (screenBounds.x - 15))), (screenBounds.y + 3) );
 
             // initialized bomb 
@@ -57,10 +56,11 @@ public class scr_bomb_spawner : MonoBehaviour
             }
         }
 
-        //increase spawn time every 10 sec
+        // increase spawn time (moreBombsInterval)
         if(Time.time > startTime + moreBombsInterval && spawnTime > 0.5f) {
             spawnTime = spawnTime - 0.1f;
             startTime = Time.time;
         }
     }
+    
 }
