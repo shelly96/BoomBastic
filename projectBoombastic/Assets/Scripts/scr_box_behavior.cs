@@ -24,7 +24,8 @@ public class scr_box_behavior : MonoBehaviour
   
         // Destroy box if it miss the water
         if (-transform.position.y > screenBounds.y) {
-            //play sound
+            
+            // Play sound
             if (!GameObject.Find("Boat").GetComponent<scr_boat>().isSinking)
             {
                 GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("water");
