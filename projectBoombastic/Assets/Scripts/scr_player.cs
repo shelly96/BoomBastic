@@ -26,7 +26,7 @@ public class scr_player : MonoBehaviour
     public Transform pickUpZone;
     [SerializeField] private float pickUpRange;
     [SerializeField] private float pickUpRadius;
-    private LayerMask objectLayer;
+    public LayerMask objectLayer;
 
     enum Direction
     {
