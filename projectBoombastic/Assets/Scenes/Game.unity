@@ -3311,6 +3311,9 @@ MonoBehaviour:
   pickUpZone: {fileID: 471168198}
   pickUpRange: 0.8
   pickUpRadius: 0.5
+  objectLayer:
+    serializedVersion: 2
+    m_Bits: 8
   throwStrength: 10
 --- !u!114 &1703844314
 MonoBehaviour:
