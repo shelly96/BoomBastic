@@ -27,6 +27,7 @@ public class scr_fish_behavior : MonoBehaviour
         originalPos = new Vector2(tf.position.x, tf.position.y);
         originalRotation = new Vector3(tf.rotation.eulerAngles.x, tf.rotation.eulerAngles.y, tf.rotation.eulerAngles.z);
 
+        // Ignore fish and cargo
         Physics2D.IgnoreLayerCollision(6, 7, true);
     }
 
@@ -44,16 +45,17 @@ public class scr_fish_behavior : MonoBehaviour
         // rotation
         float newAngle =  angle * Mathf.Cos(counter) ;
 
-        
+        // Set new poistion
         tf.SetPositionAndRotation(new Vector3(originalPos.x - newX, originalPos.y + newY, 0), Quaternion.Euler(new Vector3(0, 0, newAngle)));
 
+        // Destroy object if it is outside of the view
         if (tf.position.x < -screenBounds.x -2) {
            Destroy(this.gameObject);
         }
   
     }
 
-    //take damage
+    // Take damage
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Player") {

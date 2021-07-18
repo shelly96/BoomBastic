@@ -22,7 +22,7 @@ public class scr_box_behavior : MonoBehaviour
     void Update()
     {
   
-        //destroy box if it miss the water
+        // Destroy box if it miss the water
         if (-transform.position.y > screenBounds.y) {
             //play sound
             if (!GameObject.Find("Boat").GetComponent<scr_boat>().isSinking)
@@ -34,7 +34,7 @@ public class scr_box_behavior : MonoBehaviour
                 GameObject tempMinusScore = Instantiate(minusScore);
                 tempMinusScore.transform.position = currentPosition;
 
-                // decrease Score
+                // Decrease Score
                 GameObject.Find("Player").GetComponent<CollectCoin>().addScore(-10);
             }
             Destroy(this.gameObject);

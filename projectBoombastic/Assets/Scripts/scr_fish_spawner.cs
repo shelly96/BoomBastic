@@ -13,7 +13,7 @@ public class scr_fish_spawner : MonoBehaviour
 
     [SerializeField] private float moreFishInterval = 10.0f;
 
-    // get Scrennbounds
+    // Get Scrennbounds
     private Vector2 screenBounds;
 
     // Start is called before the first frame update
@@ -25,24 +25,24 @@ public class scr_fish_spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // spawn a fish every x seconds
+        // Spawn a fish every x seconds
         counter += Time.deltaTime;
 
         if (counter >= spawnTime)
         {
             counter = 0.0f;
 
-            // move to the bottom
+            // Move to the bottom
             Vector2 spawnPos = new Vector2((Random.Range((screenBounds.x - 3), (screenBounds.x -1))), (-screenBounds.y + 0.5f));
 
-            // initialized fish 
+            // Initialized fish 
             GameObject fishObject = fishPrefabs[Random.Range(0, fishPrefabs.Count)];
             GameObject fish = Instantiate(fishObject) as GameObject;
             fish.transform.position = spawnPos;
 
         }
 
-        //increase spawn time every 10 sec
+        // Increase spawn time every 10 sec
         if (Time.time > startTime + moreFishInterval && spawnTime > 0.5f)
         {
             spawnTime = spawnTime - 0.1f;
