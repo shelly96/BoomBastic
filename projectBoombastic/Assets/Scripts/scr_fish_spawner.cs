@@ -35,9 +35,8 @@ public class scr_fish_spawner : MonoBehaviour
             // move to the bottom
             Vector2 spawnPos = new Vector2((Random.Range((screenBounds.x - 3), (screenBounds.x -1))), (-screenBounds.y + 0.5f));
 
-            // initialized bomb 
+            // initialized fish 
             GameObject fishObject = fishPrefabs[Random.Range(0, fishPrefabs.Count)];
-
             GameObject fish = Instantiate(fishObject) as GameObject;
             fish.transform.position = spawnPos;
 
