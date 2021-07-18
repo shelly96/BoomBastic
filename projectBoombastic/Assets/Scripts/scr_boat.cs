@@ -29,10 +29,11 @@ public class scr_boat : MonoBehaviour
         originalPos = new Vector2(tf.position.x, tf.position.y);
     }
 
+    // Called every fixed frame
     private void FixedUpdate()
     {
 
-
+        // Sinking of the boat
         if (!isSinking)
         {
 
@@ -66,6 +67,7 @@ public class scr_boat : MonoBehaviour
         }
     }
 
+    // Increases ship hits until the max. is reached
     public void takeDamage() {
         if (shipHits < maxShipHits)
         {
