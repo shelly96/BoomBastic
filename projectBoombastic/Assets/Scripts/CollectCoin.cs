@@ -6,14 +6,15 @@ public class CollectCoin : MonoBehaviour
 {
     public float speed = 5.0f; 
     private Rigidbody2D rb;
-
     public static int coin = 0;
     private Vector2 screenBounds;
-
     [SerializeField] private GameObject plusScore;
+
+
 
     void Start()
     {
+        // initialize the objects start characteristics speed and starting position
         rb = this.GetComponent<Rigidbody2D>(); 
         rb.velocity = new Vector2(-speed, 0);
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height,0.0f));
@@ -25,15 +26,16 @@ public class CollectCoin : MonoBehaviour
         }
     }
 
-
+    // once collider of the coin is triggered, this method is called 
     private void OnTriggerEnter2D(Collider2D other){
 
-        Debug.Log("Player");
+        //coin hits player
         if(other.transform.tag == "Player"){
             addScore(10);
             Destroy(this.gameObject);
 
-            GameObject.Find("HeartSpawner").GetComponent<deployHeart>().setHeartWasDeployed(true);
+            // help function for the heart collection
+            GameObject.Find("HeartSpawner").GetComponent<DeployHeart>().setHeartWasDeployed(false);
             //play sound
             GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("coin");
 

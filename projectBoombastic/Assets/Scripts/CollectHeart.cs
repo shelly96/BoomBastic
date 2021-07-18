@@ -11,12 +11,14 @@ public class CollectHeart : MonoBehaviour
     private Vector2 screenBounds;
 
     [SerializeField] private GameObject plusScore;
+    private GameObject player; 
 
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>(); 
         rb.velocity = new Vector2(-speed, 0);
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height,0.0f));
+        player = GameObject.Find("Player");
     }
   
     void Update(){
@@ -25,15 +27,15 @@ public class CollectHeart : MonoBehaviour
         }
     }
 
-
+    // once the collider hits the player, the function is triggered
     private void OnTriggerEnter2D(Collider2D other){
 
         Debug.Log("Player");
         if(other.transform.tag == "Player"){
 
             // heathpoints erhöhen
-            if(GameObject.Find("Player").GetComponent<scr_player>().healthPoints<3){
-                GameObject.Find("Player").GetComponent<scr_player>().healthPoints += 1;
+            if(player.GetComponent<scr_player>().healthPoints<3){
+                player.GetComponent<scr_player>().healthPoints += 1;
             }
 
             Destroy(this.gameObject);
@@ -41,10 +43,6 @@ public class CollectHeart : MonoBehaviour
             //play sound
             GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("heal");
 
-            // Score notification
-            Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y + 0.5f);
-            GameObject tempPlusScore = Instantiate(plusScore);
-            tempPlusScore.transform.position = currentPosition;
         }
     }
 

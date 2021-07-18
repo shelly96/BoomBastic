@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class deployHeart : MonoBehaviour
+public class DeployHeart : MonoBehaviour
 {
     public GameObject heartPrefab;
-    private bool heartWasDeployed = true;
+    private bool heartWasDeployed = false;
     private Vector2 screenBounds; 
     // Start is called before the first frame update
     void Start()
@@ -14,9 +14,10 @@ public class deployHeart : MonoBehaviour
     }
 
     void Update(){
-        if(CollectCoin.coin % 50 == 0 && CollectCoin.coin!= 0 && this.heartWasDeployed==true){
+        // every 50 points, a heart is spawned to be collected
+        if(CollectCoin.coin % 50 == 0 && CollectCoin.coin!= 0 && this.heartWasDeployed==false){
             spawnHeart();
-            this.heartWasDeployed=false;
+            this.heartWasDeployed=true;
         }
     }
 
