@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class scr_game_controller : MonoBehaviour
 {
+
+    // game state
     enum State { 
         titleScreen,
         gameScreen,
@@ -22,7 +24,7 @@ public class scr_game_controller : MonoBehaviour
     [SerializeField] private List<GameObject> howToPlayElements;
 
 
-    //lives
+    // lives
     private int maxHealthPoints;
     [SerializeField] private GameObject heartsPrefabs;
     private float x_pos = 12.85f;
@@ -31,7 +33,7 @@ public class scr_game_controller : MonoBehaviour
     private List<GameObject> heartList = new List<GameObject>();
     public static bool damage = false;
 
-    //score
+    // score
     private GameObject scoreObject;
     private GameObject scoreEndscreenObject;
     private const string scoreTxt = "Score: ";
@@ -41,7 +43,7 @@ public class scr_game_controller : MonoBehaviour
     {
         activateTitleScreenElements();
 
-        //Deactivate all gameplay elements at runtime to display the title screen
+        // deactivate all gameplay elements at runtime to display the title screen
         deactivateGameplayElements();
         deactivateGameOverScreenElements();
         deactivateHowToPLayScreenElements();
@@ -50,10 +52,13 @@ public class scr_game_controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //play sound
-        GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("ambient");
-        GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("ambient_birds");
+        // play sound
+        GameObject audioController = GameObject.Find("AudioController");
 
+        audioController.GetComponent<scr_audioController>().playSound("ambient");
+        audioController.GetComponent<scr_audioController>().playSound("ambient_birds");
+
+        // set max health points
         maxHealthPoints = player.GetComponent<scr_player>().healthPoints;
 
         //init hearts/ lives
@@ -75,6 +80,7 @@ public class scr_game_controller : MonoBehaviour
 
         scoreObject = GameObject.Find("Score");
         scoreEndscreenObject = GameObject.Find("ScoreEndscreen");
+
         //manually deactivate score
         scoreObject.SetActive(false);
     }
@@ -82,7 +88,7 @@ public class scr_game_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // update depending on which state the game is currently in
         switch (currentState) {
             case State.titleScreen:
                 if (Input.GetKeyDown(KeyCode.Return))
@@ -151,13 +157,14 @@ public class scr_game_controller : MonoBehaviour
         }
 
 
-        // Reset Position (DEBUG)
+        // Reset game (DEBUG)
         if (Input.GetKey(KeyCode.R))
         {
             replay();
         }
     }
 
+    // starts the game
     public void play() {
         deactivateTitleScreenElements();
         activateGameplayElements();
@@ -165,13 +172,14 @@ public class scr_game_controller : MonoBehaviour
         currentState = State.gameScreen;
     }
 
+    // resets the game
     public void replay() {
         //reload game
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         CollectCoin.coin = 0;
     }
 
-
+    // activates all TitleScreen elements
     void activateTitleScreenElements()
     {
         foreach (GameObject activatedElement in titlescreenElements)
@@ -179,6 +187,8 @@ public class scr_game_controller : MonoBehaviour
             activatedElement.SetActive(true);
         }
     }
+
+    // deactivates all TitleScreen elements
     public void deactivateTitleScreenElements() {
         foreach (GameObject deactivatedElement in titlescreenElements)
         {
@@ -186,6 +196,7 @@ public class scr_game_controller : MonoBehaviour
         }
     }
 
+    // activates all GameplayElements
     public void activateGameplayElements()
     {
         foreach (GameObject activatedElement in gameplayElements)
@@ -202,6 +213,7 @@ public class scr_game_controller : MonoBehaviour
         scoreObject.SetActive(true);
     }
 
+    // Deactivates all GameplayElements
     void deactivateGameplayElements()
     {
         foreach (GameObject deactivatedElement in gameplayElements)
@@ -212,6 +224,7 @@ public class scr_game_controller : MonoBehaviour
 
     }
 
+    // activates all GameOverScreen elements
     public void activateGameOverScreenElements() {
         foreach (GameObject deactivatedElement in endscreenElements)
         {
@@ -231,6 +244,7 @@ public class scr_game_controller : MonoBehaviour
         scoreObject.SetActive(false);
     }
 
+    // deactivates all GameOverScreen elements
     public void deactivateGameOverScreenElements() {
         foreach (GameObject deactivatedElement in endscreenElements)
         {
@@ -238,6 +252,7 @@ public class scr_game_controller : MonoBehaviour
         }
     }
 
+    // activates all howtoplayScreen elements
     void activateHowToPlayScreenElements()
     {
         foreach (GameObject activatedElement in howToPlayElements)
@@ -246,6 +261,7 @@ public class scr_game_controller : MonoBehaviour
         }
     }
 
+    // deactivates all howtoplayScreen elements
     public void deactivateHowToPLayScreenElements() {
         foreach (GameObject deactivatedElement in howToPlayElements)
         {
@@ -253,22 +269,26 @@ public class scr_game_controller : MonoBehaviour
         }
     }
 
+    // shows howToPlay window
     public void showHowToPlayWindow() {
         activateHowToPlayScreenElements();
         deactivateTitleScreenElements();
 
     }
 
+    // hides howToPlay window
     public void hideHowToPlayWindow() {
         deactivateHowToPLayScreenElements();
         activateTitleScreenElements();
     }
 
+    // Plays a UI sound 
     public void playUISound() {
         //play sound
         GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("woodUI");
     }
 
+    // Closes the game (outside Unity)
     public void exitGame()
     {
         Application.Quit();

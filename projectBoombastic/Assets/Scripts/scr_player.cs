@@ -5,28 +5,28 @@ using UnityEngine;
 public class scr_player : MonoBehaviour
 {
 
-    //Health
-    [SerializeField] public int healthPoints = 3;
-
     private Vector2 screenBounds;
+
+    // Health
+    [SerializeField] public int healthPoints = 3;
 
     private Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
 
+    // Movement
     private Vector2 originalPos;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
     private bool inAir;
 
-
-    // PickUp
+    // PickUp & Throw
     private Collider2D pickedUpObject;
 
     public Transform pickUpZone;
     [SerializeField] private float pickUpRange;
     [SerializeField] private float pickUpRadius;
-    public LayerMask objectLayer;
+    private LayerMask objectLayer;
 
     enum Direction
     {
@@ -41,13 +41,13 @@ public class scr_player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        // Set defaults
         spriteRenderer.color = new Color(255, 255, 255);
+
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3 (Screen.width, Screen.height, 0.0f));
         rb = GetComponent<Rigidbody2D>();
         originalPos = new Vector2(transform.position.x, transform.position.y);
         inAir = false;
-
     }
 
     // Update is called once per frame
@@ -100,14 +100,9 @@ public class scr_player : MonoBehaviour
             spriteRenderer.color = new Color(1, 1, 1);
         }
 
-        // Reset Position (DEBUG)
-        /*if (Input.GetKeyUp(KeyCode.F))
-        {
-            takeDamage();
-        }*/
-
     }
 
+    // Is called every fixed frame
     private void FixedUpdate()
     {
         move();
@@ -182,6 +177,7 @@ public class scr_player : MonoBehaviour
 
     }
 
+    // Is called when a collision occurs
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Debug.Log(collision.collider.name);
@@ -206,6 +202,7 @@ public class scr_player : MonoBehaviour
 
     }
 
+    // Picks up the object in front of the player
     public void pickUpObject()
     {
         pickedUpObject = Physics2D.OverlapCircle(pickUpZone.position, pickUpRadius, objectLayer);
@@ -224,6 +221,7 @@ public class scr_player : MonoBehaviour
                     break;
             }
 
+            // Fixed an issue with player movement
             pickedUpObject.GetComponent<Rigidbody2D>().mass = 0f;
             pickedUpObject.GetComponent<Rigidbody2D>().freezeRotation = true;
         }
@@ -235,7 +233,7 @@ public class scr_player : MonoBehaviour
     }
 
 
-
+    // throws an object in the currently faced direction
     public void throwObject()
     {
         // Determine throwing direction 
@@ -253,20 +251,24 @@ public class scr_player : MonoBehaviour
         }
 
 
-        // Throw object
+        // Reset values
         pickedUpObject.GetComponent<Rigidbody2D>().mass = 1f;
         pickedUpObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        pickedUpObject.GetComponent<Rigidbody2D>().AddForce(directionVector, ForceMode2D.Impulse);
         pickedUpObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+
+        // Throw object 
+        pickedUpObject.GetComponent<Rigidbody2D>().AddForce(directionVector, ForceMode2D.Impulse);
         pickedUpObject.GetComponent<scr_bomb_behaviour>().release();
         pickedUpObject = null;
 
     }
 
+    // Decrease lives
     public void takeDamage() {
+        // sprite flash
         spriteRenderer.color = new Color(255, 0, 0);
 
-        //play sound
+        // play sound
         GameObject.Find("AudioController").GetComponent<scr_audioController>().playSound("hit");
 
         if (healthPoints > 0) {
@@ -275,14 +277,14 @@ public class scr_player : MonoBehaviour
 
     }
 
-
+    // Draws gizmos in Unity when selected
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(pickUpZone.position, pickUpRadius);
     }
 
-
+    // Debug method, resets the players position to its original position
     public void reset()
     {
         transform.position = originalPos;
